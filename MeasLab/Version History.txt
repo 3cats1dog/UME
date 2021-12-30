@@ -1,0 +1,55 @@
+﻿Yapılacaklar:
+	Çift ölçümlerde senkronizasyon problemi var, düzeltilecek;
+Ver	1.1.0 (2021-12-28)
+	Ölçüm gösterimleri (sonuçlar tablosu) sadece kV ve V olacak şekilde birimlendirildi.
+
+Ver	1.0.9 (2021-12-13)
+	34411A / 34470 AC ölçümlerde AutoRange komutu düzeltildi. (SENS->CONF)
+
+Ver	1.0.8 (2021-12-12)
+	AC ölçümlerde AutoRange eklendi. (niye kaldırdığımı hatırlamıyorum??)
+
+Ver	1.0.7 (2021-12-04)
+	GPIB tarama düzeltildi (char, dönüş problemi varmış)
+	DMM ekleme/silme opsiyonu eklendi
+	Çift olçümlerde senkron düzeltildi mi???
+
+Ver	1.0.6 (2021-11-15)
+	NI 4081 DMM eklendi,
+	kV seviyesinde 7 digit truncate kaldırıldı. (Scientific gösterime geçildi)
+	DC çarpan hatası giderildi.
+
+Ver	1.0.5 (2021-11-04)
+	İkili ölçümlerde veri senkronizasyon düzeltildi
+	Sonuç tabolosunda UUT veri digitleri yükseltildi.
+	Rawdatalar export csv'de vardı (yoktu geribildirimi gelmişti, demekki daha önce düzeltilmiş)
+
+Ver	1.0.4 (2021-11-03)
+	Eksik gelen datalarda kapanma hatası giderildi (34411A ile 0.1 Hz örneği)
+	Data sayısının eksik gelmesine yol açan 3ms aperture time değiştirildi.
+
+Ver	1.0.3 (2021-11-02)
+	Bölücüsüz ölçümler için kV->V gösterim değişimi eklendi. (sf Vrms <5 şartı ile)
+		Ayar bölümündeki Max Gerilim bölümüne (hesaplamalar da güncellendi)
+		Veri gösterim birimi de bölücüye göre otamatik olarak güncellendi
+		Sonuç skala faktorü hesaplaması da tüm olası kombinasyonlara güncellendi (DMM(kV)-> UUT(V) ve ya DMM(V)-> UUT(kV) gibi) 
+   İkili ölçümlerde ilk UUT herzaman 0 geliyordu, düzeltildi.
+   Tüm veri gişileri "," ve "." convert edecek şekilde güncellendi
+   Tüm ekran gösterimleri ise active Culture olacak şekilde tekrar düzenlendi.
+   NI PXIe 4081 için DMM template'i eklendi, (komutlar güncellenecek);
+   Ekipman Listesi bölümüne GBIP tara eklendi.
+
+   3458A için Aperture time hesaplama hatası düzeltildi.
+   Aperture time, frekans ve dalgaboyu örneklem adedi bağantı öncesi gösterilecek şekilde güncellendi.
+
+   Örneklem sayıları max 100.000 olacak şekilde sınırlandırıldı.
+
+Ver	1.0.2
+	Bölücü özelliklerine, DC mod için skala faktörü eklendi.
+	DC ölçüm sonuçları için ayrı bir gösterim ekranı eklendi.
+	DC ölçümlerde kullanılmak üzere AutoRange özelliği eklendi, eskiden olan "Auto calculate" "Calc" olarak değiştirildi.
+
+//NOT: 
+	Test ayarlarında ; "Test Tipi:DC" ve "Ölçüm Tipi:Vpeak" özelliği teknik olarak anlamsız oldu, ileriki versiyonda kaldıralacak.
+
+
