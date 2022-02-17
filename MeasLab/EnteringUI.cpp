@@ -54,8 +54,8 @@ System::Void EnteringUI::btnSave_Click(System::Object^ sender, System::EventArgs
 	{
 		Vrms *= 1000;
 		Vpeak *= 1000;
-		IskV = true;
 	}
+	IskV = chkIskV->Checked;
 
 	this->Close();
 }
