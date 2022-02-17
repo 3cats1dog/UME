@@ -277,79 +277,18 @@ private: System::Windows::Forms::TextBox^ txtsfVdc_DMM;
 private: System::Windows::Forms::Label^ label40;
 private: System::Windows::Forms::CheckBox^ chkRangeAuto_DMM;
 private: System::Windows::Forms::CheckBox^ chkRangeAuto_UUT;
-
-
-
-
-
-
-
-
-
-private: System::Windows::Forms::Label^ label30;
-private: System::Windows::Forms::Label^ label32;
-private: System::Windows::Forms::Label^ label34;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgw_ColVrms;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgw_ColVroot;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_kV;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_kV_Mag;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_Mag;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_kV_UUT;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_kV_UUT_Mag;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+private: System::Windows::Forms::Label^ label30;
+private: System::Windows::Forms::Label^ label32;
+private: System::Windows::Forms::Label^ label34;
 
 
 
@@ -513,14 +452,14 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea7 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->chkAddDateTime = (gcnew System::Windows::Forms::CheckBox());
 			this->btnReEnter = (gcnew System::Windows::Forms::Button());
@@ -564,21 +503,14 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->dgw_ColVroot = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_kV = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_Raw = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_kV_Mag = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_Raw_Mag = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_kV_UUT = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_Raw_UUT = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_kV_UUT_Mag = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ColV_Raw_UUT_Mag = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
 			this->lblResultSumm_DMM = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtLiveDC_UUT = (gcnew System::Windows::Forms::TextBox());
+			this->label36 = (gcnew System::Windows::Forms::Label());
 			this->txtLiveDC = (gcnew System::Windows::Forms::TextBox());
 			this->lblMeasUnit_UUT = (gcnew System::Windows::Forms::Label());
 			this->lblMeasUnit_DMM = (gcnew System::Windows::Forms::Label());
@@ -587,14 +519,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->txtLiveRMS_UUT = (gcnew System::Windows::Forms::TextBox());
 			this->txtLivePeakRoot2_UUT = (gcnew System::Windows::Forms::TextBox());
 			this->lblDemoMode = (gcnew System::Windows::Forms::Label());
-			this->txtLiveRMS = (gcnew System::Windows::Forms::TextBox());
-			this->txtLivePeakRoot2 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label36 = (gcnew System::Windows::Forms::Label());
+			this->txtLiveRMS = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label30 = (gcnew System::Windows::Forms::Label());
-			this->label32 = (gcnew System::Windows::Forms::Label());
-			this->label34 = (gcnew System::Windows::Forms::Label());
+			this->txtLivePeakRoot2 = (gcnew System::Windows::Forms::TextBox());
 			this->gBoxStartStop = (gcnew System::Windows::Forms::GroupBox());
 			this->btnContinue = (gcnew System::Windows::Forms::Button());
 			this->lblTestInfo_UUT = (gcnew System::Windows::Forms::Label());
@@ -667,6 +595,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->cmbVoltageRange_DMM = (gcnew System::Windows::Forms::ComboBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label30 = (gcnew System::Windows::Forms::Label());
+			this->label32 = (gcnew System::Windows::Forms::Label());
+			this->label34 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->gbWaveFormGraph->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
@@ -789,37 +720,37 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			// 
 			// chart1
 			// 
-			chartArea7->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
-			chartArea7->AxisX->Title = L"# ";
-			chartArea7->AxisY->LabelStyle->Format = L"F3";
-			chartArea7->AxisY->Title = L"kV (DMM)";
-			chartArea7->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			chartArea1->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
+			chartArea1->AxisX->Title = L"# ";
+			chartArea1->AxisY->LabelStyle->Format = L"F3";
+			chartArea1->AxisY->Title = L"kV (DMM)";
+			chartArea1->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			chartArea7->Name = L"ChartArea1";
-			chartArea8->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
-			chartArea8->AxisY->LabelStyle->Format = L"F3";
-			chartArea8->AxisY->Title = L"kV (UUT)";
-			chartArea8->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
-			chartArea8->Name = L"ChartArea2";
-			this->chart1->ChartAreas->Add(chartArea7);
-			this->chart1->ChartAreas->Add(chartArea8);
+			chartArea1->Name = L"ChartArea1";
+			chartArea2->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
+			chartArea2->AxisY->LabelStyle->Format = L"F3";
+			chartArea2->AxisY->Title = L"kV (UUT)";
+			chartArea2->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
+			chartArea2->Name = L"ChartArea2";
+			this->chart1->ChartAreas->Add(chartArea1);
+			this->chart1->ChartAreas->Add(chartArea2);
 			this->chart1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chart1->Location = System::Drawing::Point(3, 16);
 			this->chart1->Name = L"chart1";
-			series7->ChartArea = L"ChartArea1";
-			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series7->LegendText = L"DMM";
-			series7->MarkerSize = 0;
-			series7->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
-			series7->Name = L"Series1";
-			series8->ChartArea = L"ChartArea2";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series8->LegendText = L"UUT";
-			series8->MarkerSize = 0;
-			series8->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Circle;
-			series8->Name = L"Series2";
-			this->chart1->Series->Add(series7);
-			this->chart1->Series->Add(series8);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->LegendText = L"DMM";
+			series1->MarkerSize = 0;
+			series1->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
+			series1->Name = L"Series1";
+			series2->ChartArea = L"ChartArea2";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->LegendText = L"UUT";
+			series2->MarkerSize = 0;
+			series2->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Circle;
+			series2->Name = L"Series2";
+			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(450, 427);
 			this->chart1->TabIndex = 22;
 			this->chart1->Text = L"chart1";
@@ -1043,21 +974,21 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			// 
 			// chart2
 			// 
-			chartArea9->AxisX->LabelStyle->Format = L"F2";
-			chartArea9->AxisX->Title = L"V";
-			chartArea9->AxisY->LabelStyle->Format = L"F3";
-			chartArea9->AxisY->Title = L"s.f. UUT";
-			chartArea9->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea9);
+			chartArea3->AxisX->LabelStyle->Format = L"F2";
+			chartArea3->AxisX->Title = L"V";
+			chartArea3->AxisY->LabelStyle->Format = L"F3";
+			chartArea3->AxisY->Title = L"s.f. UUT";
+			chartArea3->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea3);
 			this->chart2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chart2->Location = System::Drawing::Point(0, 0);
 			this->chart2->Name = L"chart2";
-			series9->ChartArea = L"ChartArea1";
-			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
-			series9->LegendText = L"DMM";
-			series9->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
-			series9->Name = L"Series1";
-			this->chart2->Series->Add(series9);
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
+			series3->LegendText = L"DMM";
+			series3->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
+			series3->Name = L"Series1";
+			this->chart2->Series->Add(series3);
 			this->chart2->Size = System::Drawing::Size(441, 298);
 			this->chart2->TabIndex = 23;
 			this->chart2->Text = L"chart2";
@@ -1077,10 +1008,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->dgw_Sample->AllowUserToAddRows = false;
 			this->dgw_Sample->AllowUserToDeleteRows = false;
 			this->dgw_Sample->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgw_Sample->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(17) {
+			this->dgw_Sample->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
 				this->Column7, this->Column1,
-					this->dgw_ColVrms, this->dgw_ColVroot, this->Column2, this->Column3, this->Column5, this->Column4, this->Column6, this->ColV_kV,
-					this->ColV_Raw, this->ColV_kV_Mag, this->ColV_Raw_Mag, this->ColV_kV_UUT, this->ColV_Raw_UUT, this->ColV_kV_UUT_Mag, this->ColV_Raw_UUT_Mag
+					this->dgw_ColVrms, this->dgw_ColVroot, this->Column2, this->Column3, this->Column4, this->Column5, this->Column6
 			});
 			this->dgw_Sample->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dgw_Sample->Location = System::Drawing::Point(0, 0);
@@ -1111,7 +1041,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			// 
 			// dgw_ColVrms
 			// 
-			this->dgw_ColVrms->DataPropertyName = L"STR_V_kV";
+			this->dgw_ColVrms->DataPropertyName = L"V_kV";
 			this->dgw_ColVrms->HeaderText = L"High Volt. Ref (kV)";
 			this->dgw_ColVrms->Name = L"dgw_ColVrms";
 			this->dgw_ColVrms->ReadOnly = true;
@@ -1120,7 +1050,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			// 
 			// dgw_ColVroot
 			// 
-			this->dgw_ColVroot->DataPropertyName = L"STR_V_kV_UUT";
+			this->dgw_ColVroot->DataPropertyName = L"V_kV_UUT";
 			this->dgw_ColVroot->HeaderText = L"High Volt. Uuut (kV)";
 			this->dgw_ColVroot->Name = L"dgw_ColVroot";
 			this->dgw_ColVroot->ReadOnly = true;
@@ -1130,25 +1060,18 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			// Column2
 			// 
 			this->Column2->DataPropertyName = L"ScaleFactor";
-			dataGridViewCellStyle3->Format = L"F4";
-			this->Column2->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1->Format = L"F4";
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle1;
 			this->Column2->HeaderText = L"Scale Factor";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
 			// 
 			// Column3
 			// 
-			this->Column3->DataPropertyName = L"STR_V_Raw";
+			this->Column3->DataPropertyName = L"V_Raw";
 			this->Column3->HeaderText = L"V_Raw (V)";
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
-			// 
-			// Column5
-			// 
-			this->Column5->DataPropertyName = L"STR_V_Raw_UUT";
-			this->Column5->HeaderText = L"V_Raw_UUT (V)";
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
 			// 
 			// Column4
 			// 
@@ -1158,6 +1081,13 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->Column4->ReadOnly = true;
 			this->Column4->Visible = false;
 			// 
+			// Column5
+			// 
+			this->Column5->DataPropertyName = L"V_Raw_UUT";
+			this->Column5->HeaderText = L"V_Raw_UUT (V)";
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			// 
 			// Column6
 			// 
 			this->Column6->DataPropertyName = L"Ratio_UUT";
@@ -1165,70 +1095,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->Column6->Name = L"Column6";
 			this->Column6->ReadOnly = true;
 			this->Column6->Visible = false;
-			// 
-			// ColV_kV
-			// 
-			this->ColV_kV->DataPropertyName = L"V_kV";
-			this->ColV_kV->HeaderText = L"ColV_kV";
-			this->ColV_kV->Name = L"ColV_kV";
-			this->ColV_kV->ReadOnly = true;
-			this->ColV_kV->Visible = false;
-			// 
-			// ColV_Raw
-			// 
-			this->ColV_Raw->DataPropertyName = L"V_Raw";
-			this->ColV_Raw->HeaderText = L"ColV_Raw";
-			this->ColV_Raw->Name = L"ColV_Raw";
-			this->ColV_Raw->ReadOnly = true;
-			this->ColV_Raw->Visible = false;
-			// 
-			// ColV_kV_Mag
-			// 
-			this->ColV_kV_Mag->DataPropertyName = L"V_kV_Mag";
-			this->ColV_kV_Mag->HeaderText = L"ColV_kV_Mag";
-			this->ColV_kV_Mag->Name = L"ColV_kV_Mag";
-			this->ColV_kV_Mag->ReadOnly = true;
-			this->ColV_kV_Mag->Visible = false;
-			// 
-			// ColV_Raw_Mag
-			// 
-			this->ColV_Raw_Mag->DataPropertyName = L"V_Raw_Mag";
-			this->ColV_Raw_Mag->HeaderText = L"ColV_Raw_Mag";
-			this->ColV_Raw_Mag->Name = L"ColV_Raw_Mag";
-			this->ColV_Raw_Mag->ReadOnly = true;
-			this->ColV_Raw_Mag->Visible = false;
-			// 
-			// ColV_kV_UUT
-			// 
-			this->ColV_kV_UUT->DataPropertyName = L"V_kV_UUT";
-			this->ColV_kV_UUT->HeaderText = L"ColV_kV_UUT";
-			this->ColV_kV_UUT->Name = L"ColV_kV_UUT";
-			this->ColV_kV_UUT->ReadOnly = true;
-			this->ColV_kV_UUT->Visible = false;
-			// 
-			// ColV_Raw_UUT
-			// 
-			this->ColV_Raw_UUT->DataPropertyName = L"V_Raw_UUT";
-			this->ColV_Raw_UUT->HeaderText = L"ColV_Raw_UUT";
-			this->ColV_Raw_UUT->Name = L"ColV_Raw_UUT";
-			this->ColV_Raw_UUT->ReadOnly = true;
-			this->ColV_Raw_UUT->Visible = false;
-			// 
-			// ColV_kV_UUT_Mag
-			// 
-			this->ColV_kV_UUT_Mag->DataPropertyName = L"V_kV_UUT_Mag";
-			this->ColV_kV_UUT_Mag->HeaderText = L"ColV_kV_UUT_Mag";
-			this->ColV_kV_UUT_Mag->Name = L"ColV_kV_UUT_Mag";
-			this->ColV_kV_UUT_Mag->ReadOnly = true;
-			this->ColV_kV_UUT_Mag->Visible = false;
-			// 
-			// ColV_Raw_UUT_Mag
-			// 
-			this->ColV_Raw_UUT_Mag->DataPropertyName = L"V_Raw_UUT_Mag";
-			this->ColV_Raw_UUT_Mag->HeaderText = L"ColV_Raw_UUT_Mag";
-			this->ColV_Raw_UUT_Mag->Name = L"ColV_Raw_UUT_Mag";
-			this->ColV_Raw_UUT_Mag->ReadOnly = true;
-			this->ColV_Raw_UUT_Mag->Visible = false;
 			// 
 			// panel4
 			// 
@@ -1289,6 +1155,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->txtLiveDC_UUT->TabIndex = 42;
 			this->txtLiveDC_UUT->Text = L"10,34 kV";
 			this->txtLiveDC_UUT->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label36
+			// 
+			this->label36->AutoSize = true;
+			this->label36->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label36->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label36->Location = System::Drawing::Point(6, 176);
+			this->label36->Name = L"label36";
+			this->label36->Size = System::Drawing::Size(49, 25);
+			this->label36->TabIndex = 41;
+			this->label36->Text = L"Vdc";
 			// 
 			// txtLiveDC
 			// 
@@ -1391,6 +1268,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->lblDemoMode->TabIndex = 32;
 			this->lblDemoMode->Text = L"Demo Mode";
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label5->Location = System::Drawing::Point(6, 112);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(103, 25);
+			this->label5->TabIndex = 31;
+			this->label5->Text = L"Vpeak/√2";
+			// 
 			// txtLiveRMS
 			// 
 			this->txtLiveRMS->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
@@ -1405,6 +1293,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->txtLiveRMS->Text = L"10,3456565 kV";
 			this->txtLiveRMS->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label2->Location = System::Drawing::Point(7, 52);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(61, 25);
+			this->label2->TabIndex = 26;
+			this->label2->Text = L"Vrms";
+			// 
 			// txtLivePeakRoot2
 			// 
 			this->txtLivePeakRoot2->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
@@ -1418,72 +1317,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->txtLivePeakRoot2->TabIndex = 29;
 			this->txtLivePeakRoot2->Text = L"10,34 kV";
 			this->txtLivePeakRoot2->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label5->Location = System::Drawing::Point(6, 112);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(103, 25);
-			this->label5->TabIndex = 31;
-			this->label5->Text = L"Vpeak/√2";
-			// 
-			// label36
-			// 
-			this->label36->AutoSize = true;
-			this->label36->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label36->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label36->Location = System::Drawing::Point(6, 176);
-			this->label36->Name = L"label36";
-			this->label36->Size = System::Drawing::Size(49, 25);
-			this->label36->TabIndex = 41;
-			this->label36->Text = L"Vdc";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label2->Location = System::Drawing::Point(7, 52);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(61, 25);
-			this->label2->TabIndex = 26;
-			this->label2->Text = L"Vrms";
-			// 
-			// label30
-			// 
-			this->label30->AutoSize = true;
-			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label30->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label30->Location = System::Drawing::Point(223, 112);
-			this->label30->Name = L"label30";
-			this->label30->Size = System::Drawing::Size(103, 25);
-			this->label30->TabIndex = 44;
-			this->label30->Text = L"Vpeak/√2";
-			// 
-			// label32
-			// 
-			this->label32->AutoSize = true;
-			this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label32->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label32->Location = System::Drawing::Point(223, 172);
-			this->label32->Name = L"label32";
-			this->label32->Size = System::Drawing::Size(49, 25);
-			this->label32->TabIndex = 45;
-			this->label32->Text = L"Vdc";
-			// 
-			// label34
-			// 
-			this->label34->AutoSize = true;
-			this->label34->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label34->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label34->Location = System::Drawing::Point(223, 52);
-			this->label34->Name = L"label34";
-			this->label34->Size = System::Drawing::Size(61, 25);
-			this->label34->TabIndex = 43;
-			this->label34->Text = L"Vrms";
 			// 
 			// gBoxStartStop
 			// 
@@ -2292,6 +2125,39 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColV_Raw_UUT_Mag;
 			this->label15->Size = System::Drawing::Size(40, 13);
 			this->label15->TabIndex = 25;
 			this->label15->Text = L"Bölücü";
+			// 
+			// label30
+			// 
+			this->label30->AutoSize = true;
+			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label30->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label30->Location = System::Drawing::Point(223, 112);
+			this->label30->Name = L"label30";
+			this->label30->Size = System::Drawing::Size(103, 25);
+			this->label30->TabIndex = 44;
+			this->label30->Text = L"Vpeak/√2";
+			// 
+			// label32
+			// 
+			this->label32->AutoSize = true;
+			this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label32->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label32->Location = System::Drawing::Point(223, 172);
+			this->label32->Name = L"label32";
+			this->label32->Size = System::Drawing::Size(49, 25);
+			this->label32->TabIndex = 45;
+			this->label32->Text = L"Vdc";
+			// 
+			// label34
+			// 
+			this->label34->AutoSize = true;
+			this->label34->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label34->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label34->Location = System::Drawing::Point(223, 52);
+			this->label34->Name = L"label34";
+			this->label34->Size = System::Drawing::Size(61, 25);
+			this->label34->TabIndex = 43;
+			this->label34->Text = L"Vrms";
 			// 
 			// MainForm
 			// 

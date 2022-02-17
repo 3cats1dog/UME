@@ -74,7 +74,7 @@ namespace WaveFormMeasument {
 			}
 		}
 
-		void ReadResults_Enter(String^ rawData)
+		void ReadResults_Enter(String^ rawData, bool ACorDC)
 		{
 			//Create all waveform
 			array<String^>^ lines = rawData->Split('\n');
@@ -83,7 +83,14 @@ namespace WaveFormMeasument {
 			double  _Vpeak = 0;
 			double _Vdc = 0;
 			int _N;
-			double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _V);
+			if (ACorDC)
+			{
+				double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _V);
+			}
+			else
+			{
+				double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _Vdc);
+			}
 			if (lines->Length > 1)
 			{
 				double::TryParse(lines[1], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _Vpeak);
@@ -99,6 +106,7 @@ namespace WaveFormMeasument {
 				wfs->Ratio_Peak = Ratio_Peak;
 				wfs->Ratio_DC = Ratio_DC;
 				wfs->Vrms = _V;									//*Ratio;
+				wfs->Vdc = _Vdc;
 				wfs->VpeakRoot2 = _Vpeak;  
 				waves->Add(wfs);
 			}

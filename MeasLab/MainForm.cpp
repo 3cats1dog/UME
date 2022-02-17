@@ -24,7 +24,6 @@ void main(array<String^>^ arg)
 
 #pragma region  "Init"
 System::Void MainForm::MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	
 	G::ReadSettings();
 	G::ReadEnvanter();
 	
@@ -1125,7 +1124,8 @@ void MainForm::ShowManuelEnter() {
 	mForm->PeakTpye = (int)instrument->peakType;
 	mForm->ShowDialog(this);
 
-	liveDataUUT->ReadResults_Enter(mForm->Vrms.ToString() + Environment::NewLine + mForm->Vpeak.ToString());
+	bool ACorDC = (instrument->meastype == MeasType::DC ? false : true);
+	liveDataUUT->ReadResults_Enter(mForm->Vrms.ToString() + Environment::NewLine + mForm->Vpeak.ToString(), ACorDC);
 	selectedSampleUUT = liveDataUUT->waves[0];
 	UpdateLiveLabels_UUT();
 	if (G::mySet->AutoNext)
@@ -1887,45 +1887,24 @@ void MainForm::Connect()
 		 }
 	 }
 
-	 String^ UnitRef = L"(V)";
-	 String^ UnitRef_Raw = L"(V)";
-	 String^ UnitRef_UUT = L"(V)";
-	 String^ UnitRef_Raw_UUT = L"(V)";
-	 if (GridList->Count > 0)
-	 {
-		 //Find Referance Unit;
-		 UnitRef = String::Format(" ({0}V)", (GridList[0]->V_kV_Mag >= 3 ? "k" : ""));
-		 UnitRef_Raw = String::Format(" ({0}V)", (GridList[0]->V_Raw_Mag >= 3 ? "k" : ""));  
-		 UnitRef_UUT = String::Format(" ({0}V)", (GridList[0]->V_kV_UUT_Mag >= 3 ? "k" : ""));	
-		 UnitRef_Raw_UUT = String::Format(" ({0}V)", (GridList[0]->V_Raw_UUT_Mag >= 3 ? "k" : "")); 
-	 }
+
 
 	 dgw_Sample->DataSource = GridList->ToArray();	// GridList->ToArray()	;// ResultList->ToArray();
 
 	 for each (DataGridViewColumn ^ col in dgw_Sample->Columns)
 	 {
-		 if (col->DataPropertyName == "STR_V_Raw_UUT")
-		 {
-			 col->HeaderText = L"Voltage Raw Ref" + UnitRef_Raw_UUT ;
-			 col->DisplayIndex = 6;
-		 }
-		 if (col->DataPropertyName == "STR_V_Raw")
-		 {
-			 col->HeaderText = L"Voltage Raw UUT" + UnitRef_Raw;
-			 col->DisplayIndex = 5;
-		 }
 		 if (col->DataPropertyName == "ScaleFactor")
 		 {
 			 col->DisplayIndex = 4;
 		 }
-		 if (col->DataPropertyName == "STR_V_kV_UUT")
+		 if (col->DataPropertyName == "V_kV_UUT")
 		 {
-			 col->HeaderText = L"High Volt. UUT"  + UnitRef_UUT;
+			 col->HeaderText = L"High Volt. UUT";		// +(liveDataUUT->showAskV ? L" (kV)" : L" (V)");
 			 col->DisplayIndex = 3;
 		 }
-		 if (col->DataPropertyName == "STR_V_kV")
+		 if (col->DataPropertyName == "V_kV")
 		 {
-			 col->HeaderText = "High Volt. REF" + UnitRef;
+			 col->HeaderText = "High Volt. REF";		//  +(liveData->showAskV ? L" (kV)" : L" (V)");
 			 col->DisplayIndex = 2;
 		 }
 		 if (col->DataPropertyName == "SampleNo")
@@ -2138,32 +2117,18 @@ void MainForm::Connect()
 	 tw->WriteLine("");
 	 tw->WriteLine(L"Ölçümler;");
 
-	 String^ UnitRef = L"(V)";
-	 String^ UnitRef_Raw = L"(V)";
-	 String^ UnitRef_UUT = L"(V)";
-	 String^ UnitRef_Raw_UUT = L"(V)";
-	 if (GridList->Count > 0)
-	 {
-		 //Find Referance Unit;
-		 UnitRef = String::Format(" ({0}V)", (GridList[0]->V_kV_Mag >= 3 ? "k" : ""));
-		 UnitRef_Raw = String::Format(" ({0}V)", (GridList[0]->V_Raw_Mag >= 3 ? "k" : ""));
-		 UnitRef_UUT = String::Format(" ({0}V)", (GridList[0]->V_kV_UUT_Mag >= 3 ? "k" : ""));
-		 UnitRef_Raw_UUT = String::Format(" ({0}V)", (GridList[0]->V_Raw_UUT_Mag >= 3 ? "k" : ""));
-	 }
-
-
 	 if (instrument->peakType == PeakType::Peak)
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Ref Raw Vpeak/√2 {1}{0} UUT Raw Vpeak/√2 {2}{0}Ref Vpeak/√2 {3}{0} UUT Vpeak/√2 {4}{0}", G::DELIMETER, UnitRef_Raw, UnitRef_Raw_UUT, UnitRef, UnitRef_UUT));
+		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (kV){0} UUT Vpeak/√2 (kV){0}", G::DELIMETER));
 	 }
 	 else
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Ref Raw Vrms {1}{0} UUT Raw Vrms {2}{0}Ref Vrms {3}{0} UUT Vrms {4}{0}", G::DELIMETER, UnitRef_Raw, UnitRef_Raw_UUT, UnitRef, UnitRef_UUT));
+		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Ref Vrms (V){0} UUT Vrms (V){0}Ref Vrms (kV){0} UUT Vrms (kV){0}", G::DELIMETER));
 	 }
 	 for (int i = 0; i < SampleList->Count; i++)
 	 {
 		 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
-		 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1, SampleList[i]->STR_V_Raw, SampleList[i]->STR_V_Raw_UUT, SampleList[i]->STR_V_kV, SampleList[i]->STR_V_kV_UUT));
+		 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
 	 }
 
 

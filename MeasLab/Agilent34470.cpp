@@ -39,22 +39,23 @@ bool Agilent34470::ChangeVoltageRange(VoltageRange range) {
 	switch (range)
 	{
 	case MeasLab::VoltageRange::VOLT_01:
-		return		SendCommand("CONF:VOLT:" + ACDC + " 0.1");
+		return SendCommand("CONF:VOLT:" + ACDC + " 0.1");
 		break;
 	case MeasLab::VoltageRange::VOLT_1:
-		return		SendCommand("CONF:VOLT:" + ACDC + " 1");
+		return SendCommand("CONF:VOLT:" + ACDC + " 1");
 		break;
 	case MeasLab::VoltageRange::VOLT_10:
-		return		SendCommand("CONF:VOLT:" + ACDC + " 10");
+		return SendCommand("CONF:VOLT:" + ACDC + " 10");
 		break;
 	case MeasLab::VoltageRange::VOLT_100:
 		return SendCommand("CONF:VOLT:" + ACDC + " 100");
 		break;
 	case MeasLab::VoltageRange::VOLT_1000:
-		return		SendCommand("CONF:VOLT:" + ACDC + " 1000");
+		return SendCommand("CONF:VOLT:" + ACDC + " 1000");
 		break;
 	case MeasLab::VoltageRange::AUTO:
-		return	SendCommand("CONF:VOLT:" + ACDC + " AUTO");		//SendCommand("SENS:VOLT:" + ACDC + " :RANGE:AUTO 1");
+		return SendCommand("CONF:VOLT:" + ACDC + " AUTO");		//SendCommand("SENS:VOLT:" + ACDC + " :RANGE:AUTO 1");
+		//return SendCommand("SENS:VOLT:" + ACDC + " :RANGE:AUTO 1");
 		break;
 	default:
 		return false;

@@ -3,7 +3,6 @@
 #define  _GRID_OBJECT__ 
 
 #include "WaveFormMeasurement.h"
-#include "Extensions.h"
 
 
 namespace MeasLab {
@@ -45,19 +44,10 @@ namespace MeasLab {
 		property double V_kV { double get() { return _V_kV; } void set(double value) { _V_kV = value; } }
 		property double V_Raw { double get() { return _V_Raw;  }  void set(double value) { _V_Raw = value; } }
 		property double Ratio { double get() { return _ratio; } void set(double value) { _ratio = value; } }
-		property int V_kV_Mag { int get() { return Extensions::GetMagValue(_V_kV); }}
-		property int V_Raw_Mag { int get() { return Extensions::GetMagValue(_V_Raw); }}
-		property String^ STR_V_kV { String^ get() { return (V_kV_Mag >= 3) ? (_V_kV / 1000.0).ToString("F7") : _V_kV.ToString("F7"); }}
-		property String^ STR_V_Raw { String^ get() { return (V_Raw_Mag >= 3) ? (_V_Raw / 1000.0).ToString("F7") : _V_Raw.ToString("F7"); }}
 
 		property double V_kV_UUT { double get() { return _V_kV_UUT; } void set(double value) { _V_kV_UUT = value; } }
 		property double V_Raw_UUT { double get() { return _V_Raw_UUT; }  void set(double value) { _V_Raw_UUT = value; } }
 		property double Ratio_UUT { double get() { return _ratio_UUT; } void set(double value) { _ratio_UUT = value; } }
-
-		property int V_kV_UUT_Mag { int get() { return Extensions::GetMagValue(_V_kV_UUT); }}
-		property int V_Raw_UUT_Mag { int get() { return Extensions::GetMagValue(_V_Raw_UUT); }}
-		property String^ STR_V_kV_UUT { String^ get() { return (V_kV_UUT_Mag >= 3) ? (_V_kV_UUT / 1000.0).ToString("F7") : _V_kV_UUT.ToString("F7"); }}
-		property String^ STR_V_Raw_UUT { String^ get() { return (V_Raw_UUT_Mag >= 3) ? (_V_Raw_UUT / 1000.0).ToString("F7") : _V_Raw_UUT.ToString("F7"); }}
 
 		property double ScaleFactor { double get() {
 			if (V_Raw_UUT == 0) return 1.0;

@@ -96,9 +96,9 @@ namespace WaveFormMeasument {
 
 				//Now Add Scale Factor;
 
-				Vrms *= Ratio;							// / 1000.0;	  //Convert kV
-				Vpeak *= Ratio_Peak;					// / 1000.0;	  //Convert kV
-				Vdc *= Ratio_DC;						// / 1000.0;	  //Convert kV
+				Vrms *= Ratio;							// / 1000.0;					//Convert kV
+				Vpeak *= Ratio_Peak;					// / 1000.0;			//Convert kV
+				Vdc *= Ratio_DC;						// / 1000.0;				//Convert kV
 				VpeakRoot2 *= Ratio_Peak;				// / 1000.0;      //Convert kV
 				for (i = 0; i < Data->Length; i++)
 				{
