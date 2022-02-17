@@ -1151,10 +1151,16 @@ void MainForm::btnReEnter_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	//Open UI Entering;
 	EnteringUI^ mForm = gcnew EnteringUI();
+	mForm->IskV = G::mySet->IskV;
 	mForm->MeasType = (int)instrument->meastype;
+	mForm->PeakTpye = (int)instrument->peakType;
 	mForm->ShowDialog(this);
 
-	liveDataUUT->ReadResults(mForm->Vrms.ToString());
+	//liveDataUUT->ReadResults(mForm->Vrms.ToString());
+	G::mySet->IskV = mForm->IskV;
+	bool ACorDC = (instrument->meastype == MeasType::DC ? false : true);
+	liveDataUUT->ReadResults_Enter(mForm->Vrms, mForm->Vpeak, ACorDC);
+
 	selectedSampleUUT = liveDataUUT->waves[0];
 	if (!TestActive) TestActive = true;
 	UpdateLiveLabels_UUT();
