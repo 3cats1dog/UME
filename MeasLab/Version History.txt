@@ -1,6 +1,11 @@
 ﻿Yapılacaklar:
 	Çift ölçümlerde senkronizasyon problemi var, düzeltilecek;
-Ver	1.1.0 (2022-01-31) *V1.0.9 üzerinden güncellendi
+
+Ver	1.1.2 (2022-02-17)
+	UUT Vdc gösterimi düzeltildi. (ekranda vrms gösteriliyordu)
+	export kolon başlıkları (raw ve kV) düzeltildi.
+
+Ver	1.1.1 (2022-01-31) *V1.0.9 üzerinden güncellendi
 	El tipi veri girişinde VDC girişi düzeltildi,
 
 Ver	1.0.10 (2021-12-13)	* IPTAL

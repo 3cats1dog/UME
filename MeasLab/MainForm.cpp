@@ -994,7 +994,7 @@ void MainForm::UpdateLiveLabels_UUT()
 		}
 		else
 		{
-			txtLiveDC_UUT->Text = Extensions::ToEngineeringNotation(selectedSampleUUT->Vrms, "F7", "V");	//  selectedSampleUUT->Vrms.ToString("F7", G::activecul());
+			txtLiveDC_UUT->Text = Extensions::ToEngineeringNotation(selectedSampleUUT->Vdc, "F7", "V");	//  selectedSampleUUT->Vrms.ToString("F7", G::activecul());
 		}
 		break;
 	default:
@@ -2119,11 +2119,11 @@ void MainForm::Connect()
 
 	 if (instrument->peakType == PeakType::Peak)
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (kV){0} UUT Vpeak/√2 (kV){0}", G::DELIMETER));
+		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vpeak/√2 (V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}", G::DELIMETER));
 	 }
 	 else
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Ref Vrms (V){0} UUT Vrms (V){0}Ref Vrms (kV){0} UUT Vrms (kV){0}", G::DELIMETER));
+		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vrms (V){0}Raw UUT Vrms (V){0}Ref Vrms (V){0} UUT Vrms (V){0}", G::DELIMETER));
 	 }
 	 for (int i = 0; i < SampleList->Count; i++)
 	 {
