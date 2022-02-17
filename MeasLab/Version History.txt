@@ -1,6 +1,9 @@
 ﻿Yapılacaklar:
 	Çift ölçümlerde senkronizasyon problemi var, düzeltilecek;
 
+Ver	1.1.3 (2022-02-17)
+	EnterUI'e kV seçimi hep tikli kalıyordu, düzeltildi.
+
 Ver	1.1.2 (2022-02-17)
 	UUT Vdc gösterimi düzeltildi. (ekranda vrms gösteriliyordu)
 	Export kolon başlıkları (raw ve kV) düzeltildi.
