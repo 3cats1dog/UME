@@ -1120,12 +1120,15 @@ void MainForm::ShowManuelEnter() {
 	isPaused = true;
 	//Open UI Entering;
 	EnteringUI^ mForm = gcnew EnteringUI();
+	mForm->IskV = G::mySet->IskV;
 	mForm->MeasType = (int)instrument->meastype;
 	mForm->PeakTpye = (int)instrument->peakType;
 	mForm->ShowDialog(this);
 
+	G::mySet->IskV = mForm->IskV;
 	bool ACorDC = (instrument->meastype == MeasType::DC ? false : true);
-	liveDataUUT->ReadResults_Enter(mForm->Vrms.ToString() + Environment::NewLine + mForm->Vpeak.ToString(), ACorDC);
+	//liveDataUUT->ReadResults_Enter(mForm->Vrms.ToString() + Environment::NewLine + mForm->Vpeak.ToString(), ACorDC);
+	liveDataUUT->ReadResults_Enter(mForm->Vrms, mForm->Vpeak, ACorDC);
 	selectedSampleUUT = liveDataUUT->waves[0];
 	UpdateLiveLabels_UUT();
 	if (G::mySet->AutoNext)
@@ -2092,6 +2095,7 @@ void MainForm::Connect()
 		 tw->WriteLine(String::Format(L"Kademe{0}{1}{0}{2}", G::DELIMETER, instrument->rangeSTR, "-"));
 		 tw->WriteLine(String::Format(L"s.f Vrms{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVrms, "-"));
 		 tw->WriteLine(String::Format(L"s.f Vpeak{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVpeak, "-"));
+		 tw->WriteLine(String::Format(L"s.f Vdc{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVdc, "-"));
 		 tw->WriteLine(String::Format(L"ZIn{0}{1}{0}{2}", G::DELIMETER, instrument->ZinSTR, "-"));
 		 tw->WriteLine(String::Format(L"Terminal{0}{1}{0}{2}", G::DELIMETER, instrument->TerminalSide ? "FRONT" : "REAR", "-"));
 	 }
@@ -2101,6 +2105,7 @@ void MainForm::Connect()
 		 tw->WriteLine(String::Format(L"Kademe{0}{1}{0}{2}", G::DELIMETER, instrument->rangeSTR, instrumentUUT->rangeSTR));
 		 tw->WriteLine(String::Format(L"s.f Vrms{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVrms, UUT_Divider->sfVrms));
 		 tw->WriteLine(String::Format(L"s.f Vpeak{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVpeak, UUT_Divider->sfVpeak));
+		 tw->WriteLine(String::Format(L"s.f Vdc{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVdc, UUT_Divider->sfVdc));
 		 tw->WriteLine(String::Format(L"ZIn{0}{1}{0}{2}", G::DELIMETER, instrument->ZinSTR, instrumentUUT->ZinSTR));
 		 tw->WriteLine(String::Format(L"Terminal{0}{1}{0}{2}", G::DELIMETER, instrument->TerminalSide ? "FRONT" : "REAR", instrumentUUT->TerminalSide ? "FRONT" : "REAR"));
 	 }

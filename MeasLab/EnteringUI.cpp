@@ -24,6 +24,7 @@ System::Void EnteringUI::EnteringUI_Load(System::Object^ sender, System::EventAr
 			lblVPeak->Text = "V DC peak";
 		}
 	}
+	chkIskV->Checked = IskV;
 	txtVrms->Focus();
 }
 System::Void EnteringUI::txtVrms_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
@@ -48,6 +49,12 @@ System::Void EnteringUI::btnSave_Click(System::Object^ sender, System::EventArgs
 	{
 		Vrms = v1;
 		Vpeak = v2;
+	}
+	if (chkIskV->Checked)
+	{
+		Vrms *= 1000;
+		Vpeak *= 1000;
+		IskV = true;
 	}
 
 	this->Close();

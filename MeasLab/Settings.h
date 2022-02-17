@@ -32,6 +32,7 @@ namespace MeasLab {
 		int DesiredVLFCount = 1000;
 		int DesiredVLFCount2 = 200;
 		bool AutoNext = false;
+		bool IskV = false;
 		int LastDMMID =0;
 		int LastDMMDividerID = 0;
 		int LastDMMRange;

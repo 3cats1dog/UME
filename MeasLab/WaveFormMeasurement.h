@@ -74,28 +74,37 @@ namespace WaveFormMeasument {
 			}
 		}
 
-		void ReadResults_Enter(String^ rawData, bool ACorDC)
+		void ReadResults_Enter(double readedRMS, double readedPeak, bool ACorDC)	//String^ rawData,
 		{
-			//Create all waveform
-			array<String^>^ lines = rawData->Split('\n');
-			//First value Vrms or Vdc, second value is Vpeak;
 			double _V = 0;
 			double  _Vpeak = 0;
 			double _Vdc = 0;
 			int _N;
 			if (ACorDC)
 			{
-				double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _V);
+				_V = readedRMS;
 			}
 			else
 			{
-				double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _Vdc);
+				_Vdc = readedRMS;
 			}
-			if (lines->Length > 1)
-			{
-				double::TryParse(lines[1], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _Vpeak);
-				//_Vpeak /= 2.0;		//convert peak to peak to peak
-			}
+			_Vpeak = readedPeak;
+			////Create all waveform
+			//array<String^>^ lines = rawData->Split('\n');
+			////First value Vrms or Vdc, second value is Vpeak;
+			//if (ACorDC)
+			//{
+			//	double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _V);
+			//}
+			//else
+			//{
+			//	double::TryParse(lines[0], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _Vdc);
+			//}
+			//if (lines->Length > 1)
+			//{
+			//	double::TryParse(lines[1], System::Globalization::NumberStyles::Any, MeasLab::G::invcul(), _Vpeak);
+			//	//_Vpeak /= 2.0;		//convert peak to peak to peak
+			//}
 
 			waves->Clear();
 			for (int i = 0; i < WaveCount; i++) {
