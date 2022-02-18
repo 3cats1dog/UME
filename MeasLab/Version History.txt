@@ -1,6 +1,9 @@
 ﻿Yapılacaklar:
 	Çift ölçümlerde senkronizasyon problemi var, düzeltilecek;
 
+Ver	1.1.4 (2022-02-18)
+	Sonuç temizlemeye "Emin misiniz?" eklendi.
+
 Ver	1.1.3 (2022-02-17)
 	EnterUI'e kV seçimi hep tikli kalıyordu, düzeltildi.
 

@@ -2197,6 +2197,7 @@ void MainForm::Connect()
 
  void  MainForm::linkLabel2_LinkClicked(System::Object^ sender, LinkLabelLinkClickedEventArgs^ e)
  {
+	 if (MessageBox::Show(L"Tüm kayıtlı datalar silinecektir\r\nEmin misiniz?", L"Uyarı", MessageBoxButtons::YesNo) != Windows::Forms::DialogResult::Yes) return;
 	 TestNo = 0;
 	 GridList->Clear();
 	 ResultList->Clear();
