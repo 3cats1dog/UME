@@ -38,6 +38,9 @@ namespace MeasLab {
 	public:
 		bool hasUUT;
 		bool isPeak;
+		double Vrms;		//add rms for peak measurment
+		double Vrms_UUT;	//add rms for peak measurment
+
 		property int SampleNo { int get() { return _SNo; } void set(int value) { _SNo = value; } }
 		property int TestNo { int get() { return _TNo; } void set(int value) { _TNo = value; } }
 
@@ -81,6 +84,7 @@ namespace MeasLab {
 				case 1:			//paek
 					V_kV = wfs->VpeakRoot2;
 					Ratio = wfs->Ratio_Peak;
+					Vrms = wfs->Vrms;
 					break;
 				case 2:			//dc;
 					V_kV = wfs->Vdc;
@@ -102,6 +106,7 @@ namespace MeasLab {
 				case 1:			//peak;
 					V_kV_UUT = wfs->VpeakRoot2;
 					Ratio_UUT = wfs->Ratio_Peak;
+					Vrms_UUT = wfs->Vrms;
 					break;
 				case 2:			//dc
 					V_kV_UUT = wfs->Vdc;

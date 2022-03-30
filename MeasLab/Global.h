@@ -27,8 +27,9 @@ namespace MeasLab {
 	{
 	public:
 		static System::String^ ProductTitle = L"UME YG Ölçümleri";
-		static System::String^ ProductVersion = "1.1.4";
+		static System::String^ ProductVersion = "1.1.6";
 
+		
 		static System::String^ SETFILENAME = "UME_DMM.xml";
 		static System::String^ ENVFILENAME = "Envanter.xml";
 		static Settings^ mySet;
@@ -56,7 +57,8 @@ namespace MeasLab {
 		static void ReadSettings()
 		{
 			//XMLFinder^ xx = gcnew XMLFinder();
-			System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+			//System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+			System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::LocalApplicationData) + "/UME_MEASLAB";
 			System::String^ path = directory + "/" + G::SETFILENAME;
 			if (File::Exists(path))
 			{
@@ -79,7 +81,8 @@ namespace MeasLab {
 			try
 			{
 				DELIMETER = mySet->Delimeter;
-				System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+				//System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+				System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::LocalApplicationData) + "/UME_MEASLAB";
 				if (!Directory::Exists(directory))
 				{
 					Directory::CreateDirectory(directory);
@@ -96,7 +99,8 @@ namespace MeasLab {
 
 		static void ReadEnvanter()
 		{
-			System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+			//System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+			System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::LocalApplicationData) + "/UME_MEASLAB";
 			System::String^ path = directory + "/" + G::ENVFILENAME;
 			if (File::Exists(path))
 			{
@@ -117,7 +121,8 @@ namespace MeasLab {
 		{
 			try
 			{
-				String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+				//String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::CommonApplicationData) + "/UME";
+				System::String^ directory = Environment::GetFolderPath(Environment::SpecialFolder::LocalApplicationData) + "/UME_MEASLAB";
 				if (!Directory::Exists(directory))
 				{
 					Directory::CreateDirectory(directory);

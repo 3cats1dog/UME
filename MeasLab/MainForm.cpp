@@ -2130,16 +2130,21 @@ void MainForm::Connect()
 
 	 if (instrument->peakType == PeakType::Peak)
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vpeak/√2 (V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}", G::DELIMETER));
+		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Vrms Ref (V){0}Raw Ref Vpeak/√2 (V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}", G::DELIMETER));
+		 for (int i = 0; i < SampleList->Count; i++)
+		 {
+			 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
+			 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{7}{0}{3}{0}{4}{0}{5}{0}{6}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT, SampleList[i]->Vrms));
+		 }
 	 }
 	 else
 	 {
 		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vrms (V){0}Raw UUT Vrms (V){0}Ref Vrms (V){0} UUT Vrms (V){0}", G::DELIMETER));
-	 }
-	 for (int i = 0; i < SampleList->Count; i++)
-	 {
-		 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
-		 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
+		 for (int i = 0; i < SampleList->Count; i++)
+		 {
+			 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
+			 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
+		 }
 	 }
 
 
