@@ -43,6 +43,11 @@ namespace MeasLab {
 		//static Ivi::Visa::Interop::ResourceManager^ rsc = gcnew Ivi::Visa::Interop::ResourceManagerClass();
 		static double MAXLIMIT = 10E+10;
 		 
+		static bool Log_First1000 = false;
+		static bool Log_Init = false;
+		static System::String^ SaveLog;
+		static System::String^ SaveLog_First1000;
+		static System::String^ SaveLog_Init;
 		G()
 		{
 			isFake = true;

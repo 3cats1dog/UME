@@ -8,6 +8,11 @@ using namespace System::IO::Ports;
 using namespace System::Text;
 using namespace System::Threading::Tasks;
 using namespace WaveFormMeasument;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace System::IO;
 
 bool Agilent3458::SendIDN( String^% _anwser) {
 	if (isFake)
@@ -246,9 +251,9 @@ bool Agilent3458::ReadLiveData(String^% _rawdata) {
 				SendCommand("ISCALE?", scaleSTR);
 				double::TryParse(scaleSTR, ScaleCoeff);
 				_rawdata = "";
-				for (int k = 0; k < VLFData->Count;k++)
+				for (int k = 0; k < VLFData->Count; k++)
 				{
-					_rawdata += String::Format("{0:e8},{1:F5}SECS", VLFData[k]*ScaleCoeff, k) + Environment::NewLine;
+					_rawdata += String::Format("{0},{1:F5}SECS", (VLFData[k] * ScaleCoeff).ToString("E8", G::invcul()), k) + Environment::NewLine;
 
 				}
 				return true;
@@ -279,7 +284,7 @@ String^ Agilent3458::CreateFakeWaveFormRawData(int adet) {
 	{
 		double sinV = Math::Sin(2 * Math::PI * i / WaveFormSampleCount);
 		sinV += random->NextDouble() / 100.0;
-		data += String::Format("{0:e8},{1:F5}SECS", sinV* baseVal, i) + Environment::NewLine;
+		data += String::Format("{0},{1:F5}SECS", (sinV * baseVal).ToString("E8", G::invcul()), i) + Environment::NewLine;
 	}
 	return data;
 }

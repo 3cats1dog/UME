@@ -452,14 +452,14 @@ private: System::Windows::Forms::Label^ label34;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea7 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->chkAddDateTime = (gcnew System::Windows::Forms::CheckBox());
 			this->btnReEnter = (gcnew System::Windows::Forms::Button());
@@ -510,7 +510,6 @@ private: System::Windows::Forms::Label^ label34;
 			this->lblResultSumm_DMM = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtLiveDC_UUT = (gcnew System::Windows::Forms::TextBox());
-			this->label36 = (gcnew System::Windows::Forms::Label());
 			this->txtLiveDC = (gcnew System::Windows::Forms::TextBox());
 			this->lblMeasUnit_UUT = (gcnew System::Windows::Forms::Label());
 			this->lblMeasUnit_DMM = (gcnew System::Windows::Forms::Label());
@@ -519,10 +518,14 @@ private: System::Windows::Forms::Label^ label34;
 			this->txtLiveRMS_UUT = (gcnew System::Windows::Forms::TextBox());
 			this->txtLivePeakRoot2_UUT = (gcnew System::Windows::Forms::TextBox());
 			this->lblDemoMode = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->txtLiveRMS = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtLivePeakRoot2 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label36 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label30 = (gcnew System::Windows::Forms::Label());
+			this->label32 = (gcnew System::Windows::Forms::Label());
+			this->label34 = (gcnew System::Windows::Forms::Label());
 			this->gBoxStartStop = (gcnew System::Windows::Forms::GroupBox());
 			this->btnContinue = (gcnew System::Windows::Forms::Button());
 			this->lblTestInfo_UUT = (gcnew System::Windows::Forms::Label());
@@ -595,9 +598,6 @@ private: System::Windows::Forms::Label^ label34;
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->cmbVoltageRange_DMM = (gcnew System::Windows::Forms::ComboBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->label30 = (gcnew System::Windows::Forms::Label());
-			this->label32 = (gcnew System::Windows::Forms::Label());
-			this->label34 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->gbWaveFormGraph->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
@@ -720,37 +720,37 @@ private: System::Windows::Forms::Label^ label34;
 			// 
 			// chart1
 			// 
-			chartArea1->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
-			chartArea1->AxisX->Title = L"# ";
-			chartArea1->AxisY->LabelStyle->Format = L"F3";
-			chartArea1->AxisY->Title = L"kV (DMM)";
-			chartArea1->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			chartArea7->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
+			chartArea7->AxisX->Title = L"# ";
+			chartArea7->AxisY->LabelStyle->Format = L"F3";
+			chartArea7->AxisY->Title = L"kV (DMM)";
+			chartArea7->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			chartArea1->Name = L"ChartArea1";
-			chartArea2->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
-			chartArea2->AxisY->LabelStyle->Format = L"F3";
-			chartArea2->AxisY->Title = L"kV (UUT)";
-			chartArea2->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
-			chartArea2->Name = L"ChartArea2";
-			this->chart1->ChartAreas->Add(chartArea1);
-			this->chart1->ChartAreas->Add(chartArea2);
+			chartArea7->Name = L"ChartArea1";
+			chartArea8->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
+			chartArea8->AxisY->LabelStyle->Format = L"F3";
+			chartArea8->AxisY->Title = L"kV (UUT)";
+			chartArea8->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
+			chartArea8->Name = L"ChartArea2";
+			this->chart1->ChartAreas->Add(chartArea7);
+			this->chart1->ChartAreas->Add(chartArea8);
 			this->chart1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chart1->Location = System::Drawing::Point(3, 16);
 			this->chart1->Name = L"chart1";
-			series1->ChartArea = L"ChartArea1";
-			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series1->LegendText = L"DMM";
-			series1->MarkerSize = 0;
-			series1->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
-			series1->Name = L"Series1";
-			series2->ChartArea = L"ChartArea2";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series2->LegendText = L"UUT";
-			series2->MarkerSize = 0;
-			series2->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Circle;
-			series2->Name = L"Series2";
-			this->chart1->Series->Add(series1);
-			this->chart1->Series->Add(series2);
+			series7->ChartArea = L"ChartArea1";
+			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series7->LegendText = L"DMM";
+			series7->MarkerSize = 0;
+			series7->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
+			series7->Name = L"Series1";
+			series8->ChartArea = L"ChartArea2";
+			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series8->LegendText = L"UUT";
+			series8->MarkerSize = 0;
+			series8->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Circle;
+			series8->Name = L"Series2";
+			this->chart1->Series->Add(series7);
+			this->chart1->Series->Add(series8);
 			this->chart1->Size = System::Drawing::Size(450, 427);
 			this->chart1->TabIndex = 22;
 			this->chart1->Text = L"chart1";
@@ -895,10 +895,10 @@ private: System::Windows::Forms::Label^ label34;
 			this->btnReadSTB->AutoSize = true;
 			this->btnReadSTB->Location = System::Drawing::Point(3, 20);
 			this->btnReadSTB->Name = L"btnReadSTB";
-			this->btnReadSTB->Size = System::Drawing::Size(34, 13);
+			this->btnReadSTB->Size = System::Drawing::Size(58, 13);
 			this->btnReadSTB->TabIndex = 36;
 			this->btnReadSTB->TabStop = true;
-			this->btnReadSTB->Text = L"STB\?";
+			this->btnReadSTB->Text = L"Export Log";
 			this->btnReadSTB->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::btnReadSTB_LinkClicked);
 			// 
 			// statusStrip1
@@ -974,21 +974,21 @@ private: System::Windows::Forms::Label^ label34;
 			// 
 			// chart2
 			// 
-			chartArea3->AxisX->LabelStyle->Format = L"F2";
-			chartArea3->AxisX->Title = L"V";
-			chartArea3->AxisY->LabelStyle->Format = L"F3";
-			chartArea3->AxisY->Title = L"s.f. UUT";
-			chartArea3->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea3);
+			chartArea9->AxisX->LabelStyle->Format = L"F2";
+			chartArea9->AxisX->Title = L"V";
+			chartArea9->AxisY->LabelStyle->Format = L"F3";
+			chartArea9->AxisY->Title = L"s.f. UUT";
+			chartArea9->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea9);
 			this->chart2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chart2->Location = System::Drawing::Point(0, 0);
 			this->chart2->Name = L"chart2";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
-			series3->LegendText = L"DMM";
-			series3->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
-			series3->Name = L"Series1";
-			this->chart2->Series->Add(series3);
+			series9->ChartArea = L"ChartArea1";
+			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
+			series9->LegendText = L"DMM";
+			series9->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
+			series9->Name = L"Series1";
+			this->chart2->Series->Add(series9);
 			this->chart2->Size = System::Drawing::Size(441, 298);
 			this->chart2->TabIndex = 23;
 			this->chart2->Text = L"chart2";
@@ -1060,8 +1060,8 @@ private: System::Windows::Forms::Label^ label34;
 			// Column2
 			// 
 			this->Column2->DataPropertyName = L"ScaleFactor";
-			dataGridViewCellStyle1->Format = L"F4";
-			this->Column2->DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3->Format = L"F4";
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle3;
 			this->Column2->HeaderText = L"Scale Factor";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
@@ -1155,17 +1155,6 @@ private: System::Windows::Forms::Label^ label34;
 			this->txtLiveDC_UUT->TabIndex = 42;
 			this->txtLiveDC_UUT->Text = L"10,34 kV";
 			this->txtLiveDC_UUT->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// label36
-			// 
-			this->label36->AutoSize = true;
-			this->label36->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label36->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label36->Location = System::Drawing::Point(6, 176);
-			this->label36->Name = L"label36";
-			this->label36->Size = System::Drawing::Size(49, 25);
-			this->label36->TabIndex = 41;
-			this->label36->Text = L"Vdc";
 			// 
 			// txtLiveDC
 			// 
@@ -1268,17 +1257,6 @@ private: System::Windows::Forms::Label^ label34;
 			this->lblDemoMode->TabIndex = 32;
 			this->lblDemoMode->Text = L"Demo Mode";
 			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label5->Location = System::Drawing::Point(6, 112);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(103, 25);
-			this->label5->TabIndex = 31;
-			this->label5->Text = L"Vpeak/√2";
-			// 
 			// txtLiveRMS
 			// 
 			this->txtLiveRMS->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
@@ -1293,17 +1271,6 @@ private: System::Windows::Forms::Label^ label34;
 			this->txtLiveRMS->Text = L"10,3456565 kV";
 			this->txtLiveRMS->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label2->Location = System::Drawing::Point(7, 52);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(61, 25);
-			this->label2->TabIndex = 26;
-			this->label2->Text = L"Vrms";
-			// 
 			// txtLivePeakRoot2
 			// 
 			this->txtLivePeakRoot2->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
@@ -1317,6 +1284,72 @@ private: System::Windows::Forms::Label^ label34;
 			this->txtLivePeakRoot2->TabIndex = 29;
 			this->txtLivePeakRoot2->Text = L"10,34 kV";
 			this->txtLivePeakRoot2->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label5->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label5->Location = System::Drawing::Point(6, 112);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(103, 25);
+			this->label5->TabIndex = 31;
+			this->label5->Text = L"Vpeak/√2";
+			// 
+			// label36
+			// 
+			this->label36->AutoSize = true;
+			this->label36->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label36->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label36->Location = System::Drawing::Point(6, 176);
+			this->label36->Name = L"label36";
+			this->label36->Size = System::Drawing::Size(49, 25);
+			this->label36->TabIndex = 41;
+			this->label36->Text = L"Vdc";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label2->Location = System::Drawing::Point(7, 52);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(61, 25);
+			this->label2->TabIndex = 26;
+			this->label2->Text = L"Vrms";
+			// 
+			// label30
+			// 
+			this->label30->AutoSize = true;
+			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label30->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label30->Location = System::Drawing::Point(223, 112);
+			this->label30->Name = L"label30";
+			this->label30->Size = System::Drawing::Size(103, 25);
+			this->label30->TabIndex = 44;
+			this->label30->Text = L"Vpeak/√2";
+			// 
+			// label32
+			// 
+			this->label32->AutoSize = true;
+			this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label32->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label32->Location = System::Drawing::Point(223, 172);
+			this->label32->Name = L"label32";
+			this->label32->Size = System::Drawing::Size(49, 25);
+			this->label32->TabIndex = 45;
+			this->label32->Text = L"Vdc";
+			// 
+			// label34
+			// 
+			this->label34->AutoSize = true;
+			this->label34->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
+			this->label34->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->label34->Location = System::Drawing::Point(223, 52);
+			this->label34->Name = L"label34";
+			this->label34->Size = System::Drawing::Size(61, 25);
+			this->label34->TabIndex = 43;
+			this->label34->Text = L"Vrms";
 			// 
 			// gBoxStartStop
 			// 
@@ -2125,39 +2158,6 @@ private: System::Windows::Forms::Label^ label34;
 			this->label15->Size = System::Drawing::Size(40, 13);
 			this->label15->TabIndex = 25;
 			this->label15->Text = L"Bölücü";
-			// 
-			// label30
-			// 
-			this->label30->AutoSize = true;
-			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label30->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label30->Location = System::Drawing::Point(223, 112);
-			this->label30->Name = L"label30";
-			this->label30->Size = System::Drawing::Size(103, 25);
-			this->label30->TabIndex = 44;
-			this->label30->Text = L"Vpeak/√2";
-			// 
-			// label32
-			// 
-			this->label32->AutoSize = true;
-			this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label32->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label32->Location = System::Drawing::Point(223, 172);
-			this->label32->Name = L"label32";
-			this->label32->Size = System::Drawing::Size(49, 25);
-			this->label32->TabIndex = 45;
-			this->label32->Text = L"Vdc";
-			// 
-			// label34
-			// 
-			this->label34->AutoSize = true;
-			this->label34->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-			this->label34->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->label34->Location = System::Drawing::Point(223, 52);
-			this->label34->Name = L"label34";
-			this->label34->Size = System::Drawing::Size(61, 25);
-			this->label34->TabIndex = 43;
-			this->label34->Text = L"Vrms";
 			// 
 			// MainForm
 			// 

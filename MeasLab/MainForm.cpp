@@ -598,6 +598,32 @@ void MainForm::UpdateLog(String^ msg) {
 			richTextBox1->Text = msg + richTextBox1->Text;
 		}
 	}
+	//Save log for me;
+	if (G::Log_Init)
+	{
+		if (!G::Log_First1000)
+		{
+			//Write first 1000 to an ohter string;
+			G::SaveLog_First1000 += msg;
+			if (G::SaveLog_First1000->Length > 1000)
+			{
+				G::Log_First1000 = true;
+			}
+		}
+		else
+		{
+			if (G::SaveLog->Length > 100000)
+			{
+				G::SaveLog = "";
+			}
+			G::SaveLog += msg;
+		}
+	}
+	else
+	{
+		//Write all comm msg before init;
+		G::SaveLog_Init += msg;
+	}
 }
 
 void MainForm::Instrument_LogChanged(System::Object^ sender, WaveFormMeasument::LogChangeEventArgs^ e)
@@ -605,12 +631,35 @@ void MainForm::Instrument_LogChanged(System::Object^ sender, WaveFormMeasument::
 	Invoke(gcnew Action<String^>(this, &MainForm::UpdateLog), e->Text);
 }
 System::Void MainForm::btnReadSTB_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	 
+	
+	String^ filename = "Logs" + DateTime::Now.ToString("yyyy_MM_ddHHmm");
+
+	SaveFileDialog^ sfd = gcnew SaveFileDialog();
+	sfd->Filter = L"CSV Dosyası|*.csv";
+	sfd->FileName = filename + ".csv";
+	String^ fileName = Path::GetFileNameWithoutExtension(sfd->FileName);
+	sfd->OverwritePrompt = true;
+	sfd->InitialDirectory = G::mySet->BaseDirectory;
+	if (sfd->ShowDialog() != System::Windows::Forms::DialogResult::OK) return;
+
+
+	TextWriter^ tw = gcnew StreamWriter(sfd->FileName, false, Encoding::UTF8);
+	tw->WriteLine("Init");
+	tw->Write(G::SaveLog_Init);
+	tw->WriteLine("First 1000");
+	tw->Write(G::SaveLog_First1000);
+	tw->WriteLine("Last");
+	tw->Write(G::SaveLog);
+
+	delete tw;
+	return;
 	if (instrument == nullptr) return;
 	if (!instrument->isConnected) return;
 
 	richTextBox1->Text = instrument->ReturnSTB() + richTextBox1->Text;
 	richTextBox1->Text = instrumentUUT->ReturnSTB() + richTextBox1->Text;
+
+
 }
 #pragma endregion
 
@@ -701,6 +750,7 @@ void MainForm::FirstLiveDataCollect()
 	//System.Threading.Thread.Sleep(liveData.toltalMsForTest);
 	//Set timer to handle live loop;
 	UpdateLog("Start Listening" + Environment::NewLine);
+	G::Log_Init = true;
 
 	//TimerCallback^ timerDelegate = gcnew TimerCallback(this, &MainForm::TimerLoop);
 	//timer = gcnew System::Threading::Timer(timerDelegate);
@@ -1029,7 +1079,7 @@ void MainForm::UpdateLiveLabels_UUT()
 			RefreshGrid(true);
 		}
 		lblRemainData->Text = String::Format("{0} / {1}", measurementUUT->waves->Count , measurementUUT->WaveCount);
-		if (measurement->waves->Count == measurement->WaveCount)
+		if (measurementUUT->waves->Count == measurementUUT->WaveCount)
 		{
 			TestActive = false;
 			FinishTest();
@@ -1247,6 +1297,11 @@ void MainForm::Connect()
 	selectedSample = nullptr;
 	DrawMyChart();
 
+	G::Log_First1000 = false;
+	G::Log_Init = false;
+	G::SaveLog_Init = "";
+	G::SaveLog_First1000 = "";
+	G::SaveLog = "";
 
 	instrument->connType = DMM->connType;
 	switch (DMM->connType)
@@ -1841,6 +1896,7 @@ void MainForm::Connect()
 #pragma region "Grid Actions"
  void  MainForm::RefreshGrid(bool isUUT)
  {
+	 String^ gridLog = String::Format("Enter Log as {0}-{1}\r\n", ResultList->Count, ResultList_UUT->Count);
 	 int  MeasTypeInt = 0;	// (int)(instrument->meastype);		// == MeasType::AC_DCSampling);
 		//0 rms
 		//1 peak
@@ -1865,38 +1921,60 @@ void MainForm::Connect()
 		 }
 		 break;
 	 }
+	 bool addNewToList = false;
 
-	 if (!isUUT)
+	 for (int i = 0; i < ResultList->Count; i++)
 	 {
-		 //if new meas on Ref side;
-		 if (ResultList->Count > GridList->Count)
+		 if (GridList->Count < i +1)
 		 {
-			 GridObject^ newMeas = gcnew GridObject(ResultList[ResultList->Count - 1], false, MeasTypeInt);			//, liveData->showAskV
+			 addNewToList = true;
+		 }
+		 else
+		 {
+			 addNewToList = false;	// GridList[GridList->Count - 1]->hasRef;
+		 }
+
+		 //Take action
+		 if (addNewToList)
+		 {
+			 GridObject^ newMeas = gcnew GridObject(ResultList[i], false, MeasTypeInt);			//, liveData->showAskV
 			 newMeas->TestNo = TestNo;
 			 GridList->Add(newMeas);
 		 }
 		 else
 		 {
-			 if (ResultList->Count > 0)
-				 GridList[GridList->Count - 1]->Update(ResultList[ResultList->Count - 1], false, MeasTypeInt);		//, liveData->showAskV
+			 GridList[i]->Update(ResultList[i], false, MeasTypeInt);		//, liveData->showAskV
 		 }
 	 }
-	 else {
-		 //if new meas on UUT side;
-		 if (ResultList_UUT->Count > GridList->Count)
+
+	 for(int i=0;i< ResultList_UUT->Count; i++)
+	 {
+		 //gridLog += (String::Format("UUT Data; {0}/{1}-{2} =>", GridList->Count, ResultList->Count, ResultList_UUT->Count));
+		 //if last grid object has no result in UUT, just update else add new grid object;
+		 if (GridList->Count < i+1)
 		 {
-			 GridObject^ newMeas = gcnew GridObject(ResultList_UUT[ResultList_UUT->Count - 1], true, MeasTypeInt);	//, liveDataUUT->showAskV
+			 addNewToList = true;
+		 }
+		 else
+		 {
+			 addNewToList = false;// GridList[i]->hasUUT;
+		 }
+		 //gridLog += ("New UUT: " + (addNewToList ? "true" : "false") + "\r\n");
+
+		 //Take action
+		 if (addNewToList)
+		 {
+			 GridObject^ newMeas = gcnew GridObject(ResultList_UUT[i], true, MeasTypeInt);	//, liveDataUUT->showAskV
 			 newMeas->TestNo = TestNo;
 			 GridList->Add(newMeas);
 		 }
 		 else
 		 {
-			 if (ResultList_UUT->Count >0)
-				 GridList[GridList->Count - 1]->Update(ResultList_UUT[ResultList_UUT->Count - 1], true, MeasTypeInt);	//, liveDataUUT->showAskV
+			 GridList[i]->Update(ResultList_UUT[i], true, MeasTypeInt);	//, liveDataUUT->showAskV
 		 }
 	 }
 
-
+	 UpdateLog(gridLog);
 
 	 dgw_Sample->DataSource = GridList->ToArray();	// GridList->ToArray()	;// ResultList->ToArray();
 

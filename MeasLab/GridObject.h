@@ -37,6 +37,7 @@ namespace MeasLab {
 
 	public:
 		bool hasUUT;
+		bool hasRef;
 		bool isPeak;
 		double Vrms;		//add rms for peak measurment
 		double Vrms_UUT;	//add rms for peak measurment
@@ -75,6 +76,7 @@ namespace MeasLab {
 			if (!isUUT)
 			{
 				_SNo = wfs->SampleNo;
+				hasRef = true;
 				switch (MeasType)
 				{
 				case 0:			//rms
@@ -96,7 +98,7 @@ namespace MeasLab {
 			else
 			{
 				_SNo = wfs->SampleNo;
-
+				hasUUT = true;
 				switch (MeasType)
 				{
 				case 0:			//rms
