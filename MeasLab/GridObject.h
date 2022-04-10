@@ -40,6 +40,7 @@ namespace MeasLab {
 		bool hasRef;
 		bool isPeak;
 		double Vrms;		//add rms for peak measurment
+		double Vrms_Raw;    //add rms for peak measurment
 		double Vrms_UUT;	//add rms for peak measurment
 
 		property int SampleNo { int get() { return _SNo; } void set(int value) { _SNo = value; } }
@@ -87,6 +88,7 @@ namespace MeasLab {
 					V_kV = wfs->VpeakRoot2;
 					Ratio = wfs->Ratio_Peak;
 					Vrms = wfs->Vrms;
+					Vrms_Raw = wfs->Vrms / wfs->Ratio;
 					break;
 				case 2:			//dc;
 					V_kV = wfs->Vdc;

@@ -27,7 +27,7 @@ namespace MeasLab {
 	{
 	public:
 		static System::String^ ProductTitle = L"UME YG Ölçümleri";
-		static System::String^ ProductVersion = "1.1.6";
+		static System::String^ ProductVersion = "1.1.7";
 
 		
 		static System::String^ SETFILENAME = "UME_DMM.xml";

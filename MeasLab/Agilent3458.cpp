@@ -120,8 +120,8 @@ bool Agilent3458::PrepareLiveData() {
 		SendCommand("TRIG AUTO");
 		SendCommand("OFORMAT ASCII");
 		SendCommand("TIMER 400E-3");    //500 ms of each reading;
-		SendCommand(String::Format("NRDGS {0} TIMER",1));
-		//SendCommand("TARM SGL");
+		//SendCommand(String::Format("NRDGS {0} TIMER",1));
+		SendCommand("TARM SGL");
 		break;
 	case MeasLab::MeasType::DC:
 		SendCommand("PRESET NORM"); //!DINT FORMATS, TARM SYN, TRIG AUTO;
@@ -133,7 +133,7 @@ bool Agilent3458::PrepareLiveData() {
 		SendCommand("TRIG AUTO");
 		SendCommand("OFORMAT ASCII");
 		SendCommand("TIMER 400E-3");    //500 ms of each reading;
-		SendCommand(String::Format("NRDGS {0} TIMER", 1));
+		//SendCommand(String::Format("NRDGS {0} TIMER", 1));
 		//SendCommand("TARM SGL");
 		break;
 	case MeasLab::MeasType::AC_DCSampling:
