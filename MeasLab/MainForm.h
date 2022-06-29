@@ -289,6 +289,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
 private: System::Windows::Forms::Label^ label30;
 private: System::Windows::Forms::Label^ label32;
 private: System::Windows::Forms::Label^ label34;
+private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 
 
 
@@ -452,14 +453,14 @@ private: System::Windows::Forms::Label^ label34;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea7 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea8 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea5 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea6 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->chkAddDateTime = (gcnew System::Windows::Forms::CheckBox());
 			this->btnReEnter = (gcnew System::Windows::Forms::Button());
@@ -469,6 +470,7 @@ private: System::Windows::Forms::Label^ label34;
 			this->txtBarcode = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->gbWaveFormGraph = (gcnew System::Windows::Forms::GroupBox());
+			this->lnklblExportGraphData = (gcnew System::Windows::Forms::LinkLabel());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
 			this->btnExit = (gcnew System::Windows::Forms::ToolStripButton());
@@ -620,6 +622,7 @@ private: System::Windows::Forms::Label^ label34;
 			// 
 			// panel1
 			// 
+			this->panel1->Controls->Add(this->lnklblExportGraphData);
 			this->panel1->Controls->Add(this->chkAddDateTime);
 			this->panel1->Controls->Add(this->btnReEnter);
 			this->panel1->Controls->Add(this->llblRefreshGrid);
@@ -718,39 +721,51 @@ private: System::Windows::Forms::Label^ label34;
 			this->gbWaveFormGraph->TabStop = false;
 			this->gbWaveFormGraph->Text = L"Dalga Formu";
 			// 
+			// lnklblExportGraphData
+			// 
+			this->lnklblExportGraphData->AutoSize = true;
+			this->lnklblExportGraphData->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->lnklblExportGraphData->Location = System::Drawing::Point(839, 39);
+			this->lnklblExportGraphData->Name = L"lnklblExportGraphData";
+			this->lnklblExportGraphData->Size = System::Drawing::Size(95, 13);
+			this->lnklblExportGraphData->TabIndex = 34;
+			this->lnklblExportGraphData->TabStop = true;
+			this->lnklblExportGraphData->Text = L"Export Graph Data";
+			this->lnklblExportGraphData->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::lnklblExportGraphData_LinkClicked);
+			// 
 			// chart1
 			// 
-			chartArea7->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
-			chartArea7->AxisX->Title = L"# ";
-			chartArea7->AxisY->LabelStyle->Format = L"F3";
-			chartArea7->AxisY->Title = L"kV (DMM)";
-			chartArea7->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			chartArea4->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
+			chartArea4->AxisX->Title = L"# ";
+			chartArea4->AxisY->LabelStyle->Format = L"F3";
+			chartArea4->AxisY->Title = L"kV (DMM)";
+			chartArea4->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			chartArea7->Name = L"ChartArea1";
-			chartArea8->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
-			chartArea8->AxisY->LabelStyle->Format = L"F3";
-			chartArea8->AxisY->Title = L"kV (UUT)";
-			chartArea8->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
-			chartArea8->Name = L"ChartArea2";
-			this->chart1->ChartAreas->Add(chartArea7);
-			this->chart1->ChartAreas->Add(chartArea8);
+			chartArea4->Name = L"ChartArea1";
+			chartArea5->AxisX->Enabled = System::Windows::Forms::DataVisualization::Charting::AxisEnabled::False;
+			chartArea5->AxisY->LabelStyle->Format = L"F3";
+			chartArea5->AxisY->Title = L"kV (UUT)";
+			chartArea5->AxisY->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
+			chartArea5->Name = L"ChartArea2";
+			this->chart1->ChartAreas->Add(chartArea4);
+			this->chart1->ChartAreas->Add(chartArea5);
 			this->chart1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chart1->Location = System::Drawing::Point(3, 16);
 			this->chart1->Name = L"chart1";
-			series7->ChartArea = L"ChartArea1";
-			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series7->LegendText = L"DMM";
-			series7->MarkerSize = 0;
-			series7->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
-			series7->Name = L"Series1";
-			series8->ChartArea = L"ChartArea2";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series8->LegendText = L"UUT";
-			series8->MarkerSize = 0;
-			series8->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Circle;
-			series8->Name = L"Series2";
-			this->chart1->Series->Add(series7);
-			this->chart1->Series->Add(series8);
+			series4->ChartArea = L"ChartArea1";
+			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series4->LegendText = L"DMM";
+			series4->MarkerSize = 0;
+			series4->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
+			series4->Name = L"Series1";
+			series5->ChartArea = L"ChartArea2";
+			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series5->LegendText = L"UUT";
+			series5->MarkerSize = 0;
+			series5->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Circle;
+			series5->Name = L"Series2";
+			this->chart1->Series->Add(series4);
+			this->chart1->Series->Add(series5);
 			this->chart1->Size = System::Drawing::Size(450, 427);
 			this->chart1->TabIndex = 22;
 			this->chart1->Text = L"chart1";
@@ -974,21 +989,21 @@ private: System::Windows::Forms::Label^ label34;
 			// 
 			// chart2
 			// 
-			chartArea9->AxisX->LabelStyle->Format = L"F2";
-			chartArea9->AxisX->Title = L"V";
-			chartArea9->AxisY->LabelStyle->Format = L"F3";
-			chartArea9->AxisY->Title = L"s.f. UUT";
-			chartArea9->Name = L"ChartArea1";
-			this->chart2->ChartAreas->Add(chartArea9);
+			chartArea6->AxisX->LabelStyle->Format = L"F2";
+			chartArea6->AxisX->Title = L"V";
+			chartArea6->AxisY->LabelStyle->Format = L"F3";
+			chartArea6->AxisY->Title = L"s.f. UUT";
+			chartArea6->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea6);
 			this->chart2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->chart2->Location = System::Drawing::Point(0, 0);
 			this->chart2->Name = L"chart2";
-			series9->ChartArea = L"ChartArea1";
-			series9->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
-			series9->LegendText = L"DMM";
-			series9->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
-			series9->Name = L"Series1";
-			this->chart2->Series->Add(series9);
+			series6->ChartArea = L"ChartArea1";
+			series6->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
+			series6->LegendText = L"DMM";
+			series6->MarkerStyle = System::Windows::Forms::DataVisualization::Charting::MarkerStyle::Diamond;
+			series6->Name = L"Series1";
+			this->chart2->Series->Add(series6);
 			this->chart2->Size = System::Drawing::Size(441, 298);
 			this->chart2->TabIndex = 23;
 			this->chart2->Text = L"chart2";
@@ -1060,8 +1075,8 @@ private: System::Windows::Forms::Label^ label34;
 			// Column2
 			// 
 			this->Column2->DataPropertyName = L"ScaleFactor";
-			dataGridViewCellStyle3->Format = L"F4";
-			this->Column2->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle2->Format = L"F4";
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle2;
 			this->Column2->HeaderText = L"Scale Factor";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
@@ -2294,6 +2309,7 @@ private:
 	System::Void txtAppliedVoltage_UUT_TextChanged(System::Object^ sender, System::EventArgs^ e);
 	System::Void chkRangeAuto_DMM_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
 	System::Void chkRangeAuto_UUT_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
+	System::Void lnklblExportGraphData_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e);
 
 	
 	void MainForm::LoadCombo();
@@ -2330,7 +2346,6 @@ private:
 	void MainForm::Instrument_LogChanged(System::Object^ sender, WaveFormMeasument::LogChangeEventArgs^ e);
 	void MainForm::UpdateLog(String^ msg);
 	void MainForm::ShowManuelEnter();
- 
 };
 
 }

@@ -44,6 +44,7 @@ namespace MeasLab {
 		double LastFreq;
 		double LastFreqVLF;
 		int LastSampleCount;
+		bool useDCOffset;
 
 		Settings()
 		{
@@ -57,6 +58,7 @@ namespace MeasLab {
 			WaveCount = 5;
 			COMPort = "Demo";
 			GBIPPort = "instr:";
+			useDCOffset = false;
 		}
 
 		~Settings()

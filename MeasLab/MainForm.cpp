@@ -1057,6 +1057,10 @@ void MainForm::UpdateLiveLabels_UUT()
 		{
 			txtLiveRMS_UUT->Text = Extensions::ToEngineeringNotation(selectedSampleUUT->Vrms, "F7", "V"); ;			// selectedSampleUUT->Vrms.ToString("F7", G::activecul());	// +"kV";
 			txtLivePeakRoot2_UUT->Text = Extensions::ToEngineeringNotation(selectedSampleUUT->VpeakRoot2, "F7", "V");		// selectedSampleUUT->VpeakRoot2.ToString("F7", G::activecul());	// +"kV";
+			if (G::mySet->useDCOffset && instrument->meastype == MeasType::AC_DCSampling)
+			{
+				txtLiveDC_UUT->Text = Extensions::ToEngineeringNotation(selectedSampleUUT->Vdc, "F7", "V");	//  selectedSampleUUT->Vrms.ToString("F7", G::activecul());
+			}
 		}
 		break;
 	}
@@ -1117,6 +1121,10 @@ void MainForm::UpdateLiveLabels()
 		{
 			txtLiveRMS->Text = Extensions::ToEngineeringNotation(selectedSample->Vrms, "F7", "V");			// (selectedSample->Vrms).ToString("F7", G::activecul()); // +"kV";
 			txtLivePeakRoot2->Text = Extensions::ToEngineeringNotation(selectedSample->VpeakRoot2, "F7", "V");		// (selectedSample->VpeakRoot2).ToString("F7", G::activecul());	// +"kV";
+			if (G::mySet->useDCOffset && instrument->meastype == MeasType::AC_DCSampling)
+			{
+				txtLiveDC->Text = Extensions::ToEngineeringNotation(selectedSample->Vdc, "F7", "V");			// (selectedSample->Vrms).ToString("F7", G::activecul()); // +"kV";
+			}
 		}
 		break;
 	}
@@ -1226,7 +1234,8 @@ void MainForm::LiveProgress() {
 	toolStripProgressBar1->Visible = true;
 	if (instrStatus == MeasLab::SampleStatus::ReadData)
 	{
-		toolStripProgressBar1->Value = ((float)instrument->answerbyte->Count / (float)instrument->ReadByteCount)*100;
+		float cc= ((float)instrument->answerbyte->Count / (float)instrument->ReadByteCount) * 100;
+		toolStripProgressBar1->Value = cc > 100 ? 100 : cc;
 	}
 	else
 	{
@@ -1242,7 +1251,8 @@ void MainForm::LiveProgress_UUT() {
 	toolStripProgressBar2->Visible = true;
 	if (instrStatus_UUT == MeasLab::SampleStatus::ReadData)
 	{
-		toolStripProgressBar2->Value =((float)instrumentUUT->answerbyte->Count / (float)instrumentUUT->ReadByteCount)*100;
+		float cc = ((float)instrument->answerbyte->Count / (float)instrument->ReadByteCount) * 100;
+		toolStripProgressBar2->Value = cc > 100 ? 100 : cc;
 	}
 	else
 	{
@@ -1891,6 +1901,87 @@ void MainForm::Connect()
 
  }
 
+ void MainForm::lnklblExportGraphData_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+
+	 //if (ResultList->Count == 0) return;
+	 //String^ filename = "GraphData";
+	 //SaveFileDialog^ sfd = gcnew SaveFileDialog();
+	 //sfd->Filter = L"CSV Dosyası|*.csv";
+	 //sfd->FileName = filename + ".csv";
+	 //String^ fileName = Path::GetFileNameWithoutExtension(sfd->FileName);
+	 //sfd->OverwritePrompt = true;
+	 //sfd->InitialDirectory = G::mySet->BaseDirectory;
+	 //if (sfd->ShowDialog() != System::Windows::Forms::DialogResult::OK) return;
+
+	 //TextWriter^ tw = gcnew StreamWriter(sfd->FileName, false, Encoding::UTF8); // ;  File.CreateText())
+	 //String^ header = "Data #0";
+
+	 //for (int i = 1; i < ResultList->Count; i++)
+	 //{
+		// header += G::DELIMETER + "Data #" + i.ToString();
+	 //}
+	 //tw->WriteLine(header);
+	 //int count = 0;
+	 //String^ Dataline = "";
+	 //for (int i = 0; i < ResultList[0]->Data->Length; i++)
+	 //{
+		// Dataline = "";
+		// for (int k = 0; k < ResultList->Count; k++)
+		// {
+		//	 if (i < ResultList[k]->Data->Length)
+		//	 {
+		//		 Dataline += ResultList[k]->Data[i]->V.ToString() + G::DELIMETER;
+		//	 }
+		//	 else
+		//	 {
+		//		 Dataline += G::DELIMETER;
+		//	 }
+		// }
+		// tw->WriteLine(Dataline);
+	 //}
+	 //tw->Close();
+	 //delete tw;
+
+
+	 if (ResultList_UUT->Count == 0) return;
+	 String^ filename = "GraphData";
+	 SaveFileDialog^ sfd = gcnew SaveFileDialog();
+	 sfd->Filter = L"CSV Dosyası|*.csv";
+	 sfd->FileName = filename + ".csv";
+	 String^ fileName = Path::GetFileNameWithoutExtension(sfd->FileName);
+	 sfd->OverwritePrompt = true;
+	 sfd->InitialDirectory = G::mySet->BaseDirectory;
+	 if (sfd->ShowDialog() != System::Windows::Forms::DialogResult::OK) return;
+
+	 TextWriter^ tw = gcnew StreamWriter(sfd->FileName, false, Encoding::UTF8); // ;  File.CreateText())
+	 String^ header = "Data #0";
+
+	 for (int i = 1; i < ResultList->Count; i++)
+	 {
+		 header += G::DELIMETER + "Data #" + i.ToString();
+	 }
+	 tw->WriteLine(header);
+	 int count = 0;
+	 String^ Dataline = "";
+	 for (int i = 0; i < ResultList[0]->Data->Length; i++)
+	 {
+		 Dataline = "";
+		 for (int k = 0; k < ResultList->Count; k++)
+		 {
+			 if (i < ResultList[k]->Data->Length)
+			 {
+				 Dataline += ResultList[k]->Data[i]->V.ToString() + G::DELIMETER;
+			 }
+			 else
+			 {
+				 Dataline += G::DELIMETER;
+			 }
+		 }
+		 tw->WriteLine(Dataline);
+	 }
+	 tw->Close();
+	 delete tw;
+ }
 #pragma	endregion
 
 #pragma region "Grid Actions"
@@ -2208,11 +2299,15 @@ void MainForm::Connect()
 
 	 if (instrument->peakType == PeakType::Peak)
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Vrms Ref (V){0}Raw Ref Vpeak/√2 (V){0}Vrms Raw(V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}", G::DELIMETER));
+		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vpeak/√2 (V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}Raw Ref Vrms(V){0}Raw UUT Vrms(V){0}Ref Vrms(V){0}UUT Vrms(V){0}", G::DELIMETER));
 		 for (int i = 0; i < SampleList->Count; i++)
 		 {
 			 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
-			 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{7}{0}{3}{0}{4}{0}{8}{0}{5}{0}{6}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT, SampleList[i]->Vrms, SampleList[i]->Vrms_Raw));
+			 tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}{0}{10}{0}", G::DELIMETER, SampleList[i]->TestNo, i + 1,
+				 SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT,
+				 SampleList[i]->V_kV, SampleList[i]->V_kV_UUT,
+				 SampleList[i]->Vrms_Raw, SampleList[i]->Vrms_Raw_UUT,
+				 SampleList[i]->Vrms, SampleList[i]->Vrms_UUT));
 		 }
 	 }
 	 else

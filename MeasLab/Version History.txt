@@ -1,6 +1,13 @@
 ﻿Yapılacaklar:
-	Çift ölçümlerde senkronizasyon problemi var, düzeltilecek;
 
+Ver	1.1.8 (2022-06-24)
+	Fix AC peak export column
+	Add 3458A DC offset calculation (setting form)
+
+Ver	1.1.7 (2022-04-11)
+	Add Vrms raw to peak measuremnt output,
+	Fix Ac autorange in 3458A
+	VLF Çift ölçümlerde (Ref + UUT) senkronizasyon problemi  düzeltildi ;
 Ver	1.1.4 (2022-02-18)
 	Sonuç temizlemeye "Emin misiniz?" eklendi.
 

@@ -275,16 +275,17 @@ String^ Agilent3458::CreateFakeWaveFormRawData(int adet) {
 	switch (range)
 	{
 	case MeasLab::VoltageRange::VOLT_01: baseVal = 0.4515E-01;				break;
-	case MeasLab::VoltageRange::VOLT_1:baseVal = 8.4515E-01;				break;
+	case MeasLab::VoltageRange::VOLT_1:baseVal = 2.000E-01;				break;
 	case MeasLab::VoltageRange::VOLT_10:baseVal = 6.455E+00;				break;
 	case MeasLab::VoltageRange::VOLT_100:baseVal = 20.4515E-00;			break;
-	case MeasLab::VoltageRange::VOLT_1000:baseVal = 200.4515E-00;			break;
+	case MeasLab::VoltageRange::VOLT_1000:baseVal = 989.90E-00;			break;
 	}
+	double vdcoffset = 0.020;
 	for (int i = startPhase; i < adet + startPhase; i++)
 	{
-		double sinV = Math::Sin(2 * Math::PI * i / WaveFormSampleCount);
-		sinV += random->NextDouble() / 100.0;
-		data += String::Format("{0},{1:F5}SECS", (sinV * baseVal).ToString("E8", G::invcul()), i) + Environment::NewLine;
+		double sinV = baseVal *Math::Sin(2 * Math::PI * i / WaveFormSampleCount);
+		sinV += baseVal * random->NextDouble() / 1000.0 * (random->Next(1) == 0 ? -1 : +1) + vdcoffset;
+		data += String::Format("{0},{1:F5}SECS", (sinV).ToString("E8", G::invcul()), i) + Environment::NewLine;
 	}
 	return data;
 }

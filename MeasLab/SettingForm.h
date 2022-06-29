@@ -59,6 +59,8 @@ namespace MeasLab {
 	private: System::Windows::Forms::TextBox^ txtWaveFormSampleCount2;
 
 	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::GroupBox^ groupBox6;
+	private: System::Windows::Forms::CheckBox^ chkUseDC;
 
 
 
@@ -98,6 +100,8 @@ namespace MeasLab {
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtWaveFormSampleCount2 = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
+			this->chkUseDC = (gcnew System::Windows::Forms::CheckBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nud_Duration))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->nud_Freq))->BeginInit();
@@ -105,6 +109,7 @@ namespace MeasLab {
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			this->groupBox5->SuspendLayout();
+			this->groupBox6->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
@@ -225,7 +230,7 @@ namespace MeasLab {
 			// 
 			// btnSave
 			// 
-			this->btnSave->Location = System::Drawing::Point(372, 222);
+			this->btnSave->Location = System::Drawing::Point(399, 264);
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Size = System::Drawing::Size(139, 50);
 			this->btnSave->TabIndex = 1;
@@ -307,11 +312,32 @@ namespace MeasLab {
 			this->label7->TabIndex = 0;
 			this->label7->Text = L"Dalgaformu Örneklem Sayısı";
 			// 
+			// groupBox6
+			// 
+			this->groupBox6->Controls->Add(this->chkUseDC);
+			this->groupBox6->Location = System::Drawing::Point(283, 182);
+			this->groupBox6->Name = L"groupBox6";
+			this->groupBox6->Size = System::Drawing::Size(255, 63);
+			this->groupBox6->TabIndex = 5;
+			this->groupBox6->TabStop = false;
+			this->groupBox6->Text = L"VLF Ölçümleri (3458A)";
+			// 
+			// chkUseDC
+			// 
+			this->chkUseDC->AutoSize = true;
+			this->chkUseDC->Location = System::Drawing::Point(8, 26);
+			this->chkUseDC->Name = L"chkUseDC";
+			this->chkUseDC->Size = System::Drawing::Size(114, 17);
+			this->chkUseDC->TabIndex = 1;
+			this->chkUseDC->Text = L"DC Offset Hesapla";
+			this->chkUseDC->UseVisualStyleBackColor = true;
+			// 
 			// SettingForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(550, 319);
+			this->Controls->Add(this->groupBox6);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
@@ -334,12 +360,15 @@ namespace MeasLab {
 			this->groupBox4->PerformLayout();
 			this->groupBox5->ResumeLayout(false);
 			this->groupBox5->PerformLayout();
+			this->groupBox6->ResumeLayout(false);
+			this->groupBox6->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void SettingForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		chkUseFixZInput->Checked = G::mySet->useFixedZInput;
+		chkUseDC->Checked = G::mySet->useDCOffset;
 		chkAutoNextOnManualReading->Checked = G::mySet->AutoNext;
 		nud_Duration->Value = G::mySet->BeepDuration;
 		nud_Freq->Value = G::mySet->BeepFreq;
@@ -360,6 +389,7 @@ namespace MeasLab {
 		G::mySet->AutoNext = chkAutoNextOnManualReading->Checked;
 		G::mySet->DesiredVLFCount = Convert::ToInt32(txtWaveFormSampleCount->Text);
 		G::mySet->DesiredVLFCount2 = Convert::ToInt32(txtWaveFormSampleCount2->Text);
+		G::mySet->useDCOffset = chkUseDC->Checked;
 		String^ msg = "";
 		if (G::mySet->DesiredVLFCount > 100000)
 		{

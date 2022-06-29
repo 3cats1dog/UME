@@ -76,19 +76,31 @@ namespace WaveFormMeasument {
 			{
 				List<double>^ vrmsList = gcnew List<double>();
 				 
+				double dc = 0;
 				double s = 0;
 				int i;
 				double maxValue = -9999999;
 				double minValue = +9999999;
+				//Calculate DC offset
+				if (G::mySet->useDCOffset)
+				{
+					for (i = 0; i < Data->Length; i++)
+					{
+						dc += Data[i]->V;
+					}
+					dc = dc / Data->Length;
+				}
+
 				for (i = 0; i < Data->Length; i++)
 				{
 					if (maxValue < Data[i]->V) { maxValue = Data[i]->V; }
 					if (minValue > Data[i]->V) { minValue = Data[i]->V; }
-					s += Data[i]->V * Data[i]->V;
+					//s += Data[i]->V * Data[i]->V;
+					s += (Data[i]->V - dc) * (Data[i]->V - dc);
 					vrmsList->Add(Math::Sqrt(s / (i + 1)));
 				}
 				Vrms = Math::Sqrt(s / Data->Length);
-				Vdc = Vrms;
+				Vdc = dc;
 				//Find Peak
 				Vpeak = maxValue;	// Data.Max(z = > z.V);
 				Vptp = maxValue - minValue;
