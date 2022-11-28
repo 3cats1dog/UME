@@ -202,8 +202,8 @@ bool Agilent34470::ReadLiveData(String^% _rawdata) {
 			case MeasLab::VoltageRange::VOLT_100:data = 20.4515E-01;			break;
 			case MeasLab::VoltageRange::VOLT_1000:data = 200.4515E-01;			break;
 			}
-			_rawdata = (data + random->NextDouble() / 100.0).ToString();
-			_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString();
+			_rawdata = (data + random->NextDouble() / 100.0).ToString(G::invcul());
+			_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString(G::invcul());
 			return true;
 		}
 		responseMode = CommMode::ASCII;
@@ -249,7 +249,7 @@ bool Agilent34470::ReadLiveData(String^% _rawdata) {
 						Int64 int64Val = Convert::ToInt64(HexStr, 16);
 						double data = BitConverter::Int64BitsToDouble(int64Val);
 
-						_rawdata += String::Format("{0:e8},{1}SECS", data, i) + Environment::NewLine;
+						_rawdata += String::Format("{0},{1}SECS", data.ToString("e8", G::invcul()), i) + Environment::NewLine;
 					}
 					catch (Exception^ ex)
 					{

@@ -225,8 +225,8 @@ bool Agilent3441x::ReadLiveData(String^% _rawdata) {
 			case MeasLab::VoltageRange::VOLT_100:data = 20.4515E-01;			break;
 			case MeasLab::VoltageRange::VOLT_1000:data = 200.4515E-01;			break;
 			}
-			_rawdata = (data + random->NextDouble() / 100.0).ToString();
-			_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString();
+			_rawdata = (data + random->NextDouble() / 100.0).ToString(G::invcul());
+			_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString(G::invcul());
 			return true;
 		}
 
@@ -280,12 +280,11 @@ String^ Agilent3441x::CreateFakeWaveFormRawData(int adet) {
 	int startPhase = random->Next(360);
 	double SampleCount = (double)WaveFormSampleCount;
 
-
 	for (int i = startPhase; i < adet  + startPhase; i++)
 	{
 		double sinV = Math::Sin(2 * Math::PI * i / WaveFormSampleCount);
 		sinV += random->NextDouble() / 100.0;
-		data += String::Format("{0:e8},{1:F5}SECS", sinV, i) + Environment::NewLine;
+		data += String::Format("{0},{1:F5}SECS", sinV.ToString("e8", G::invcul()), i) + Environment::NewLine;
 	}
 	return data;
 }

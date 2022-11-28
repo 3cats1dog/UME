@@ -209,11 +209,11 @@ bool NIPXI4081::ReadLiveData(String^% _rawdata) {
 			case MeasLab::VoltageRange::VOLT_100:data = 20.4515E-01;			break;
 			case MeasLab::VoltageRange::VOLT_1000:data = 200.4515E-01;			break;
 			}
-			_rawdata = (data + random->NextDouble() / 100.0).ToString();
-			//_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString();
+			_rawdata = (data + random->NextDouble() / 100.0).ToString(G::invcul());
+			//_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString(G::invcul());
 			return true;
 		}
-		_rawdata = (DmmSession->Measurement->Read()).ToString();
+		_rawdata = (DmmSession->Measurement->Read()).ToString(G::invcul());
 		return true;
 		break;
 	case MeasLab::MeasType::AC_DCSampling:
@@ -247,7 +247,7 @@ void NIPXI4081::WaveformAcquisition_ReadWaveformCompleted(Object^ sender, Nation
 
 		for (int k = 0; k < analogWaveform->SampleCount; k++)
 		{
-			_rawDataBuffer += String::Format("{0:e8},{1:F5}SECS", readingsBuffer[k], k) + Environment::NewLine;
+			_rawDataBuffer += String::Format("{0},{1:F5}SECS", readingsBuffer[k].ToString("e8", G::invcul()), k) + Environment::NewLine;
 
 		}
 	}

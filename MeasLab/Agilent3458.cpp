@@ -200,7 +200,7 @@ bool Agilent3458::ReadLiveData(String^% _rawdata) {
 			case MeasLab::VoltageRange::VOLT_100:data = 20.4515E-00;			break;
 			case MeasLab::VoltageRange::VOLT_1000:data = 200.4515E-00;			break;
 			}
-			_rawdata = (data + random->NextDouble() / 100.0).ToString();
+			_rawdata = (data + random->NextDouble() / 100.0).ToString(G::invcul());
 			//_rawdata += "\n" + (data + random->NextDouble() / 100.0).ToString();
 			return true;
 		}
