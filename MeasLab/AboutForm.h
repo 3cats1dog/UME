@@ -85,9 +85,9 @@ namespace MeasLab {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(12, 262);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(347, 16);
+			this->label1->Size = System::Drawing::Size(422, 16);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"U2 Yazılım Ve Bilişim Teknolojileri Limited Şirketi";
+			this->label1->Text = L"U2 Software and Information Technologies Limited Company";
 			// 
 			// label2
 			// 
@@ -96,7 +96,7 @@ namespace MeasLab {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(79, 288);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(206, 16);
+			this->label2->Size = System::Drawing::Size(205, 16);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"İletişim : info@u2yazilim.com";
 			// 
@@ -105,10 +105,9 @@ namespace MeasLab {
 			this->richTextBox1->Location = System::Drawing::Point(15, 46);
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->ReadOnly = true;
-			this->richTextBox1->Size = System::Drawing::Size(318, 54);
+			this->richTextBox1->Size = System::Drawing::Size(418, 54);
 			this->richTextBox1->TabIndex = 3;
-			this->richTextBox1->Text = L"TUBİTAK UME Yüksek Gerilim Laboratuvarı ölçü cihazlarının kontrol ve senkronizasy"
-				L"onu için geliştrilmiştir.";
+			this->richTextBox1->Text = L"It was developed for the control and synchronization of High Voltage Laboratory measurement devices.";
 			// 
 			// lblVersion
 			// 
@@ -133,7 +132,7 @@ namespace MeasLab {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(366, 312);
+			this->ClientSize = System::Drawing::Size(445, 312);
 			this->Controls->Add(this->lblProgramName);
 			this->Controls->Add(this->lblVersion);
 			this->Controls->Add(this->richTextBox1);
@@ -142,7 +141,7 @@ namespace MeasLab {
 			this->Controls->Add(this->pictureBox1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"AboutForm";
-			this->Text = L"Hakkında";
+			this->Text = L"About";
 			this->Load += gcnew System::EventHandler(this, &AboutForm::AboutForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);

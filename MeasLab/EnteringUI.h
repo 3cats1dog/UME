@@ -74,7 +74,7 @@ namespace MeasLab {
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Size = System::Drawing::Size(123, 49);
 			this->btnSave->TabIndex = 2;
-			this->btnSave->Text = L"Kaydet";
+			this->btnSave->Text = L"Save";
 			this->btnSave->UseVisualStyleBackColor = true;
 			this->btnSave->Click += gcnew System::EventHandler(this, &EnteringUI::btnSave_Click);
 			// 
@@ -142,7 +142,7 @@ namespace MeasLab {
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"EnteringUI";
-			this->Text = L"El Tipi Ölçü Aleti Manuel Veri Girişi";
+			this->Text = L"Handheld DMM Manual Data Entry";
 			this->Load += gcnew System::EventHandler(this, &EnteringUI::EnteringUI_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

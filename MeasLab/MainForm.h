@@ -643,7 +643,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->chkAddDateTime->Name = L"chkAddDateTime";
 			this->chkAddDateTime->Size = System::Drawing::Size(101, 17);
 			this->chkAddDateTime->TabIndex = 33;
-			this->chkAddDateTime->Text = L"Tarih/Saat Ekle";
+			this->chkAddDateTime->Text = L"Add DateTime";
 			this->chkAddDateTime->UseVisualStyleBackColor = true;
 			// 
 			// btnReEnter
@@ -666,7 +666,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->llblRefreshGrid->Size = System::Drawing::Size(36, 13);
 			this->llblRefreshGrid->TabIndex = 27;
 			this->llblRefreshGrid->TabStop = true;
-			this->llblRefreshGrid->Text = L"Yenile";
+			this->llblRefreshGrid->Text = L"Refresh";
 			this->llblRefreshGrid->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::llblRefreshGrid_LinkClicked);
 			// 
 			// linkLabel1
@@ -678,7 +678,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->linkLabel1->Size = System::Drawing::Size(79, 13);
 			this->linkLabel1->TabIndex = 30;
 			this->linkLabel1->TabStop = true;
-			this->linkLabel1->Text = L"Sonuçları Aktar";
+			this->linkLabel1->Text = L"Export Results";
 			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel1_LinkClicked);
 			// 
 			// linkLabel2
@@ -690,7 +690,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->linkLabel2->Size = System::Drawing::Size(90, 13);
 			this->linkLabel2->TabIndex = 31;
 			this->linkLabel2->TabStop = true;
-			this->linkLabel2->Text = L"Sonuçları Temizle";
+			this->linkLabel2->Text = L"Clear Results";
 			this->linkLabel2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel2_LinkClicked);
 			// 
 			// txtBarcode
@@ -709,7 +709,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(55, 13);
 			this->label7->TabIndex = 25;
-			this->label7->Text = L"Dosya Adı";
+			this->label7->Text = L"File Name";
 			// 
 			// gbWaveFormGraph
 			// 
@@ -719,7 +719,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->gbWaveFormGraph->Size = System::Drawing::Size(456, 446);
 			this->gbWaveFormGraph->TabIndex = 49;
 			this->gbWaveFormGraph->TabStop = false;
-			this->gbWaveFormGraph->Text = L"Dalga Formu";
+			this->gbWaveFormGraph->Text = L"WaveForm";
 			// 
 			// lnklblExportGraphData
 			// 
@@ -791,7 +791,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnExit->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btnExit->Name = L"btnExit";
 			this->btnExit->Size = System::Drawing::Size(36, 24);
-			this->btnExit->Text = L"Çıkış";
+			this->btnExit->Text = L"Exit";
 			this->btnExit->Click += gcnew System::EventHandler(this, &MainForm::btnExit_Click);
 			// 
 			// toolStripSeparator
@@ -805,7 +805,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnConnect->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btnConnect->Name = L"btnConnect";
 			this->btnConnect->Size = System::Drawing::Size(67, 24);
-			this->btnConnect->Text = L"Bağlan";
+			this->btnConnect->Text = L"Connect";
 			this->btnConnect->Click += gcnew System::EventHandler(this, &MainForm::btnConnect_Click);
 			// 
 			// btnDisconnect
@@ -814,7 +814,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnDisconnect->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btnDisconnect->Name = L"btnDisconnect";
 			this->btnDisconnect->Size = System::Drawing::Size(80, 24);
-			this->btnDisconnect->Text = L"Bağ. İptal";
+			this->btnDisconnect->Text = L"Close Conn.";
 			this->btnDisconnect->Visible = false;
 			this->btnDisconnect->Click += gcnew System::EventHandler(this, &MainForm::btnDisconnect_Click);
 			// 
@@ -830,7 +830,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->tsbtnDeviceList->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->tsbtnDeviceList->Name = L"tsbtnDeviceList";
 			this->tsbtnDeviceList->Size = System::Drawing::Size(92, 24);
-			this->tsbtnDeviceList->Text = L"Ekipman Listesi";
+			this->tsbtnDeviceList->Text = L"Equipment List";
 			this->tsbtnDeviceList->Click += gcnew System::EventHandler(this, &MainForm::tsbtnDeviceList_Click);
 			// 
 			// btnSettings
@@ -839,7 +839,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnSettings->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btnSettings->Name = L"btnSettings";
 			this->btnSettings->Size = System::Drawing::Size(68, 24);
-			this->btnSettings->Text = L"Ayarlar";
+			this->btnSettings->Text = L"Settings";
 			this->btnSettings->Click += gcnew System::EventHandler(this, &MainForm::btnSettings_Click);
 			// 
 			// btnShowLog
@@ -849,7 +849,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnShowLog->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btnShowLog->Name = L"btnShowLog";
 			this->btnShowLog->Size = System::Drawing::Size(135, 24);
-			this->btnShowLog->Text = L"İletişim Loglarını Göster";
+			this->btnShowLog->Text = L"Show Commnunication Logs";
 			this->btnShowLog->Click += gcnew System::EventHandler(this, &MainForm::btnShowLog_Click);
 			// 
 			// toolStripSeparator3
@@ -863,7 +863,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->helpToolStripButton->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->helpToolStripButton->Name = L"helpToolStripButton";
 			this->helpToolStripButton->Size = System::Drawing::Size(81, 24);
-			this->helpToolStripButton->Text = L"Hakkında";
+			this->helpToolStripButton->Text = L"About";
 			this->helpToolStripButton->Click += gcnew System::EventHandler(this, &MainForm::helpToolStripButton_Click);
 			// 
 			// panelLog
@@ -902,7 +902,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->linkClearLog->Size = System::Drawing::Size(43, 13);
 			this->linkClearLog->TabIndex = 35;
 			this->linkClearLog->TabStop = true;
-			this->linkClearLog->Text = L"Temizle";
+			this->linkClearLog->Text = L"Clear";
 			this->linkClearLog->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkClearLog_LinkClicked);
 			// 
 			// btnReadSTB
@@ -974,7 +974,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->groupBox2->Size = System::Drawing::Size(963, 385);
 			this->groupBox2->TabIndex = 48;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Sonuçlar";
+			this->groupBox2->Text = L"Results";
 			// 
 			// panel3
 			// 
@@ -1155,7 +1155,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->groupBox3->Size = System::Drawing::Size(456, 242);
 			this->groupBox3->TabIndex = 46;
 			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Önizleme";
+			this->groupBox3->Text = L"Preview";
 			// 
 			// txtLiveDC_UUT
 			// 
@@ -1381,7 +1381,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->gBoxStartStop->Size = System::Drawing::Size(421, 312);
 			this->gBoxStartStop->TabIndex = 47;
 			this->gBoxStartStop->TabStop = false;
-			this->gBoxStartStop->Text = L"Test Ayarları";
+			this->gBoxStartStop->Text = L"Test Settings";
 			// 
 			// btnContinue
 			// 
@@ -1391,7 +1391,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnContinue->Name = L"btnContinue";
 			this->btnContinue->Size = System::Drawing::Size(200, 36);
 			this->btnContinue->TabIndex = 37;
-			this->btnContinue->Text = L"Devam";
+			this->btnContinue->Text = L"Continue";
 			this->btnContinue->UseVisualStyleBackColor = true;
 			this->btnContinue->Visible = false;
 			this->btnContinue->Click += gcnew System::EventHandler(this, &MainForm::btnContinue_Click);
@@ -1407,7 +1407,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->lblTestInfo_UUT->Name = L"lblTestInfo_UUT";
 			this->lblTestInfo_UUT->Size = System::Drawing::Size(139, 13);
 			this->lblTestInfo_UUT->TabIndex = 36;
-			this->lblTestInfo_UUT->Text = L"UUT DMM 20 örneklem";
+			this->lblTestInfo_UUT->Text = L"UUT DMM 20 sample";
 			// 
 			// btnStart
 			// 
@@ -1418,7 +1418,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->btnStart->Name = L"btnStart";
 			this->btnStart->Size = System::Drawing::Size(170, 81);
 			this->btnStart->TabIndex = 18;
-			this->btnStart->Text = L"Örneklem Al";
+			this->btnStart->Text = L"Take Sample";
 			this->btnStart->UseVisualStyleBackColor = true;
 			this->btnStart->Click += gcnew System::EventHandler(this, &MainForm::btnStart_Click);
 			// 
@@ -1446,7 +1446,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label28->Name = L"label28";
 			this->label28->Size = System::Drawing::Size(67, 13);
 			this->label28->TabIndex = 35;
-			this->label28->Text = L"Ölçüm Tipi";
+			this->label28->Text = L"Measurement Type";
 			// 
 			// cmbPeakType
 			// 
@@ -1466,7 +1466,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(57, 13);
 			this->label1->TabIndex = 30;
-			this->label1->Text = L"Test Tipi";
+			this->label1->Text = L"Test Type";
 			// 
 			// cmbMeasType
 			// 
@@ -1497,7 +1497,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(52, 13);
 			this->label4->TabIndex = 31;
-			this->label4->Text = L"Frekans";
+			this->label4->Text = L"Frequency";
 			// 
 			// txtFreq
 			// 
@@ -1567,7 +1567,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(97, 13);
 			this->label9->TabIndex = 16;
-			this->label9->Text = L"Örneklem Sayısı";
+			this->label9->Text = L"Number of Samples";
 			// 
 			// cmbSampleAdet
 			// 
@@ -1619,7 +1619,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->gbDMM->Size = System::Drawing::Size(533, 312);
 			this->gbDMM->TabIndex = 53;
 			this->gbDMM->TabStop = false;
-			this->gbDMM->Text = L"Multimetreler";
+			this->gbDMM->Text = L"Multimeters";
 			// 
 			// chkRangeAuto_DMM
 			// 
@@ -1688,7 +1688,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label31->Name = L"label31";
 			this->label31->Size = System::Drawing::Size(61, 13);
 			this->label31->TabIndex = 68;
-			this->label31->Text = L"Max Gerilim";
+			this->label31->Text = L"Max Voltage";
 			// 
 			// chkRange_DMM
 			// 
@@ -1827,7 +1827,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label33->Name = L"label33";
 			this->label33->Size = System::Drawing::Size(61, 13);
 			this->label33->TabIndex = 71;
-			this->label33->Text = L"Max Gerilim";
+			this->label33->Text = L"Max Voltage";
 			// 
 			// chkRange_UUT
 			// 
@@ -1877,7 +1877,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label29->Name = L"label29";
 			this->label29->Size = System::Drawing::Size(46, 13);
 			this->label29->TabIndex = 48;
-			this->label29->Text = L"Kademe";
+			this->label29->Text = L"Range";
 			// 
 			// cmbDivider_UUT
 			// 
@@ -1898,7 +1898,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(40, 13);
 			this->label6->TabIndex = 61;
-			this->label6->Text = L"Bölücü";
+			this->label6->Text = L"Divider";
 			// 
 			// cmbVoltageRange_UUT
 			// 
@@ -1948,7 +1948,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label25->Name = L"label25";
 			this->label25->Size = System::Drawing::Size(37, 13);
 			this->label25->TabIndex = 53;
-			this->label25->Text = L"Z Giriş";
+			this->label25->Text = L"Z Input";
 			// 
 			// txtTerminal_UUT
 			// 
@@ -2112,7 +2112,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label19->Name = L"label19";
 			this->label19->Size = System::Drawing::Size(37, 13);
 			this->label19->TabIndex = 35;
-			this->label19->Text = L"Z Giriş";
+			this->label19->Text = L"Z Input";
 			// 
 			// label16
 			// 
@@ -2151,7 +2151,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(46, 13);
 			this->label14->TabIndex = 28;
-			this->label14->Text = L"Kademe";
+			this->label14->Text = L"Range";
 			// 
 			// cmbVoltageRange_DMM
 			// 
@@ -2172,7 +2172,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(40, 13);
 			this->label15->TabIndex = 25;
-			this->label15->Text = L"Bölücü";
+			this->label15->Text = L"Divider";
 			// 
 			// MainForm
 			// 
@@ -2190,7 +2190,7 @@ private: System::Windows::Forms::LinkLabel^ lnklblExportGraphData;
 			this->Controls->Add(this->toolStrip1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MainForm";
-			this->Text = L"TUBITAK-UME Yüksek Gerilim Ölçüm Arayüzü";
+			this->Text = L"High Voltage Measurement Interface";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainForm::MainForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->panel1->ResumeLayout(false);

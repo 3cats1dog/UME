@@ -162,6 +162,7 @@ namespace MeasLab {
 				switch (connType)
 				{
 				case EnvanterConnection::GBIP:
+				case EnvanterConnection::USB:
 					if (isFake) return FakeOpen;
 					//if (instr1 == nullptr) return false;
 					//if (instr1->IO == nullptr) return false;
@@ -224,7 +225,7 @@ namespace MeasLab {
 		}
 
 
-		  void Connect(String^ cnnstr, int _baudRate, bool _useGPIB);	//Generic fol all type DMM
+		  void Connect(String^ cnnstr, int _baudRate, EnvanterConnection _connType);	//Generic fol all type DMM
 		  void DisConnect();											//Generic fol all type DMM
 
 	public:

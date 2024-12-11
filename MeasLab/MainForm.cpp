@@ -560,11 +560,11 @@ void MainForm::UpdatePLCTiming()
 		instrument->CalculateParam();
 
 		lblTestInfo_DMM->Text = String::Format(L"Freq: {0:F2} Hz \r\n", instrument->SampleFreq);
-		lblTestInfo_DMM->Text += String::Format(L"DMM => {0} örneklem (APER:{1}) ", instrument->WaveFormSampleCount, instrument->ApertureTime);
+		lblTestInfo_DMM->Text += String::Format(L"DMM => {0} sample (APER:{1}) ", instrument->WaveFormSampleCount, instrument->ApertureTime);
 		if (instrumentUUT->type == DMMType::DMM)
 		{
 			instrumentUUT->CalculateParam();
-			lblTestInfo_UUT->Text = String::Format(L"UUT => {0} örneklem (APER:{1})  ", instrumentUUT->WaveFormSampleCount, instrumentUUT->ApertureTime);
+			lblTestInfo_UUT->Text = String::Format(L"UUT => {0} sample (APER:{1})  ", instrumentUUT->WaveFormSampleCount, instrumentUUT->ApertureTime);
 		}
 		else
 		{
@@ -635,7 +635,7 @@ System::Void MainForm::btnReadSTB_LinkClicked(System::Object^ sender, System::Wi
 	String^ filename = "Logs" + DateTime::Now.ToString("yyyy_MM_ddHHmm");
 
 	SaveFileDialog^ sfd = gcnew SaveFileDialog();
-	sfd->Filter = L"CSV Dosyası|*.csv";
+	sfd->Filter = L"CSV Files|*.csv";
 	sfd->FileName = filename + ".csv";
 	String^ fileName = Path::GetFileNameWithoutExtension(sfd->FileName);
 	sfd->OverwritePrompt = true;
@@ -952,7 +952,7 @@ void MainForm::ReadLiveData_UUT()
 	bool isOK = instrumentUUT->ReadLiveData(rawSTR);		//SendCommand(":TRAC:DATA?", rawSTR);
 	if (!isOK)
 	{
-		MessageBox::Show("Hata Oluştu");
+		MessageBox::Show("An error occurred");
 		return;
 	}
 
@@ -1317,10 +1317,11 @@ void MainForm::Connect()
 	switch (DMM->connType)
 	{
 	case EnvanterConnection::GBIP:
-		instrument->Connect(DMM->Address, 0, true);
+	case EnvanterConnection::USB:
+		instrument->Connect(DMM->Address, 0, DMM->connType);
 		break;
 	case EnvanterConnection::RS232:
-		instrument->Connect(DMM->Address, G::mySet->BaudRate, false);
+		instrument->Connect(DMM->Address, G::mySet->BaudRate, DMM->connType);
 		break;
 	case EnvanterConnection::PXI:
 		((NIDMM::NIPXI4081^)instrument)->Connect_PXI(DMM->Address);
@@ -1334,10 +1335,11 @@ void MainForm::Connect()
 	switch (UUT->connType)
 	{
 	case EnvanterConnection::GBIP:
-		instrumentUUT->Connect(UUT->Address, 0, true);
+	case EnvanterConnection::USB:
+		instrumentUUT->Connect(UUT->Address, 0, UUT->connType);
 		break;
 	case EnvanterConnection::RS232:
-		instrumentUUT->Connect(UUT->Address, G::mySet->BaudRate, false);
+		instrumentUUT->Connect(UUT->Address, G::mySet->BaudRate, UUT->connType);
 		break;
 	case EnvanterConnection::PXI:
 		((NIDMM::NIPXI4081^)instrumentUUT)->Connect_PXI(DMM->Address);
@@ -1354,10 +1356,10 @@ void MainForm::Connect()
 	if (!readOK_DMM || !readOK_UUT) {
 
 		if (!readOK_DMM) {
-			MessageBox::Show(L"Ref. DMM cihazı ile iletişim sorunu oluştu!!!\n");
+			MessageBox::Show(L"There was a communication problem with the Ref. DMM device!!!\n");
 		}
 		if (!readOK_UUT) {
-			MessageBox::Show(L"UUT cihazı ile iletişim sorunu oluştu!!!\n");
+			MessageBox::Show(L"There was a communication problem with the UUT device!!!\n");
 		}
 
 		instrument->DisConnect();
@@ -1371,7 +1373,7 @@ void MainForm::Connect()
 	bool readOK = instrument->SendIDN(deviceSTR);		// instrument->SendCommand("*IDN?", deviceSTR);
 	if (!readOK && 12<2)
 	{
-		MessageBox::Show(L"Ref. DMM bağlantısında sorun oluştu!!!");
+		MessageBox::Show(L"There was a problem connecting to Ref. DMM!!!");
 		instrument->DisConnect();
 		return;
 	}
@@ -1382,7 +1384,7 @@ void MainForm::Connect()
 		readOK = instrumentUUT->SendIDN(deviceSTR_UUT);
 		if (!readOK)
 		{
-			MessageBox::Show(L"UUT bağlantısında sorun oluştu!!!");
+			MessageBox::Show(L"There was a problem connecting UUT!!!");
 			instrument->DisConnect();
 			instrumentUUT->DisConnect();
 			return;
@@ -1426,19 +1428,19 @@ void MainForm::Connect()
 	 {
 		 if (!instrument->canReadPeak)
 		 {
-			 MessageBox::Show(L"Peak ölçümü sadece Agilent(Keysight) 34511A modelinde bulunmaktadır!!!");
+			 MessageBox::Show(L"Peak measurement is only available on Agilent(Keysight) 34511A model!!!");
 			 return;
 		 }
 		 if (instrumentUUT->type == DMMType::DMM && !instrumentUUT->canReadPeak)
 		 {
-			 MessageBox::Show(L"Peak ölçümü sadece Agilent(Keysight) 34511A modelinde bulunmatadır!!!");
+			 MessageBox::Show(L"Peak measurement is only available on Agilent(Keysight) 34511A model!!!");
 			 return;
 		 }
 	 }
 
 	 if (DMM->ID == UUT->ID)
 	 {
-		 MessageBox::Show(L"Aynı cihaz hem DMM hem de UUT olarak seçilemez!!!");
+		 MessageBox::Show(L"The same device cannot be selected as both DMM and UUT!!!");
 		 return;
 	 }
 
@@ -1694,7 +1696,7 @@ void MainForm::Connect()
 	 //txtRatio->Enabled = false;
 	 //txtTestDuration->Enabled = false;
 	 btnStart->Enabled = true;
-	 btnStart->Text = L"İptal";
+	 btnStart->Text = L"Cancel";
 
 	 CollectModulus = 1;	// (int)(TestDuration - 30) / measurement->WaveCount;
 	 StartTime = DateTime::Now;
@@ -1724,7 +1726,7 @@ void MainForm::Connect()
 	 cmbVoltageRange_DMM->Enabled = true;
 	 cmbVoltageRange_UUT->Enabled = true;
 	 btnContinue->Visible = false;
-	 btnStart->Text = L"Örneklem Al";
+	 btnStart->Text = L"Take Sample";
  }
 
 #pragma endregion
@@ -1946,7 +1948,7 @@ void MainForm::Connect()
 	 if (ResultList_UUT->Count == 0) return;
 	 String^ filename = "GraphData";
 	 SaveFileDialog^ sfd = gcnew SaveFileDialog();
-	 sfd->Filter = L"CSV Dosyası|*.csv";
+	 sfd->Filter = L"CSV File|*.csv";
 	 sfd->FileName = filename + ".csv";
 	 String^ fileName = Path::GetFileNameWithoutExtension(sfd->FileName);
 	 sfd->OverwritePrompt = true;
@@ -2147,7 +2149,7 @@ void MainForm::Connect()
 	 double dagilganlik = Math::Sqrt(sumsqr / count);
 
 
-	 lblResultSumm_DMM->Text = String::Format(L"Ort: {0:F3}   , Delta: {1:F3} ", avgValue, dagilganlik);
+	 lblResultSumm_DMM->Text = String::Format(L"Avg: {0:F3}   , Delta: {1:F3} ", avgValue, dagilganlik);
  }
 
  void MainForm::CalculateSummary_DMM() {
@@ -2169,7 +2171,7 @@ void MainForm::Connect()
 	 }
 	 double dagilganlik = Math::Sqrt(sumsqr / count);
 
-	 lblResultSumm_DMM->Text = String::Format(L"Ort: {0:F3} kV  , Delta: {1:F3} kV", avgValue, dagilganlik);
+	 lblResultSumm_DMM->Text = String::Format(L"Avg: {0:F3} kV  , Delta: {1:F3} kV", avgValue, dagilganlik);
  }
  void MainForm::CalculateSummary_UUT() {
 	 //lblResultSumm_UUT->Text = "-";
@@ -2253,7 +2255,7 @@ void MainForm::Connect()
 		 filename += "_" + DateTime::Now.ToString("yyyy_MM_ddHHmm");
 	 }
 	 SaveFileDialog^ sfd = gcnew SaveFileDialog();
-	 sfd->Filter = L"CSV Dosyası|*.csv";
+	 sfd->Filter = L"CSV File|*.csv";
 	 sfd->FileName = filename + ".csv";
 	 String^ fileName = Path::GetFileNameWithoutExtension(sfd->FileName);
 	 sfd->OverwritePrompt = true;
@@ -2266,8 +2268,8 @@ void MainForm::Connect()
 	 tw->WriteLine(String::Format(L"DMM{0}{1}{0}{2}", G::DELIMETER, DMM->ToString(), UUT->ToString()));
 	 if (UUT->device == DMMDevice::NoneDevice)
 	 {
-		 tw->WriteLine(String::Format(L"Bölücü{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->ToString(), "-"));
-		 tw->WriteLine(String::Format(L"Kademe{0}{1}{0}{2}", G::DELIMETER, instrument->rangeSTR, "-"));
+		 tw->WriteLine(String::Format(L"Divier{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->ToString(), "-"));
+		 tw->WriteLine(String::Format(L"Range{0}{1}{0}{2}", G::DELIMETER, instrument->rangeSTR, "-"));
 		 tw->WriteLine(String::Format(L"s.f Vrms{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVrms, "-"));
 		 tw->WriteLine(String::Format(L"s.f Vpeak{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVpeak, "-"));
 		 tw->WriteLine(String::Format(L"s.f Vdc{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVdc, "-"));
@@ -2276,8 +2278,8 @@ void MainForm::Connect()
 	 }
 	 else
 	 {
-		 tw->WriteLine(String::Format(L"Bölücü{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->ToString(), UUT_Divider->ToString()));
-		 tw->WriteLine(String::Format(L"Kademe{0}{1}{0}{2}", G::DELIMETER, instrument->rangeSTR, instrumentUUT->rangeSTR));
+		 tw->WriteLine(String::Format(L"Divier{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->ToString(), UUT_Divider->ToString()));
+		 tw->WriteLine(String::Format(L"Range{0}{1}{0}{2}", G::DELIMETER, instrument->rangeSTR, instrumentUUT->rangeSTR));
 		 tw->WriteLine(String::Format(L"s.f Vrms{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVrms, UUT_Divider->sfVrms));
 		 tw->WriteLine(String::Format(L"s.f Vpeak{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVpeak, UUT_Divider->sfVpeak));
 		 tw->WriteLine(String::Format(L"s.f Vdc{0}{1}{0}{2}", G::DELIMETER, DMM_Divider->sfVdc, UUT_Divider->sfVdc));
@@ -2287,19 +2289,19 @@ void MainForm::Connect()
 
 	 tw->WriteLine("");
 	 tw->WriteLine("");
-	 tw->WriteLine(L"Test Bilgileri;");
-	 tw->WriteLine(String::Format(L"Test Tipi{0}{1}", G::DELIMETER, instrument->meastypeSTR));
-	 tw->WriteLine(String::Format(L"Veri Tipi{0}{1}", G::DELIMETER, instrument->peakTypeSTR ));
-	 tw->WriteLine(String::Format(L"Frekans {0}{1} Hz", G::DELIMETER, (instrument->meastype == MeasType::DC ? 0.0 : instrument->SampleFreq)));
-	 tw->WriteLine(String::Format(L"Test Tarihi{0}{1}", G::DELIMETER, DateTime::Now));
+	 tw->WriteLine(L"Test Information;");
+	 tw->WriteLine(String::Format(L"Test Type{0}{1}", G::DELIMETER, instrument->meastypeSTR));
+	 tw->WriteLine(String::Format(L"Data Type{0}{1}", G::DELIMETER, instrument->peakTypeSTR ));
+	 tw->WriteLine(String::Format(L"Frequency {0}{1} Hz", G::DELIMETER, (instrument->meastype == MeasType::DC ? 0.0 : instrument->SampleFreq)));
+	 tw->WriteLine(String::Format(L"Test Datetime{0}{1}", G::DELIMETER, DateTime::Now));
 
 	 tw->WriteLine("");
 	 tw->WriteLine("");
-	 tw->WriteLine(L"Ölçümler;");
+	 tw->WriteLine(L"Measurements;");
 
 	 if (instrument->peakType == PeakType::Peak)
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vpeak/√2 (V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}Raw Ref Vrms(V){0}Raw UUT Vrms(V){0}Ref Vrms(V){0}UUT Vrms(V){0}", G::DELIMETER));
+		 tw->WriteLine(String::Format(L"Test#{0}Order#{0}Raw Ref Vpeak/√2 (V){0}Raw UUT Vpeak/√2 (V){0}Ref Vpeak/√2 (V){0} UUT Vpeak/√2 (V){0}Raw Ref Vrms(V){0}Raw UUT Vrms(V){0}Ref Vrms(V){0}UUT Vrms(V){0}", G::DELIMETER));
 		 for (int i = 0; i < SampleList->Count; i++)
 		 {
 			 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
@@ -2312,7 +2314,7 @@ void MainForm::Connect()
 	 }
 	 else
 	 {
-		 tw->WriteLine(String::Format(L"Test#{0}Sıra#{0}Raw Ref Vrms (V){0}Raw UUT Vrms (V){0}Ref Vrms (V){0} UUT Vrms (V){0}", G::DELIMETER));
+		 tw->WriteLine(String::Format(L"Test#{0}Order#{0}Raw Ref Vrms (V){0}Raw UUT Vrms (V){0}Ref Vrms (V){0} UUT Vrms (V){0}", G::DELIMETER));
 		 for (int i = 0; i < SampleList->Count; i++)
 		 {
 			 //tw->WriteLine(String::Format(L"{1}{0}{2}{0}{3}{0}{2}{0}{3}", G::DELIMETER, i + 1, SampleList[i]->V_Raw, SampleList[i]->V_Raw_UUT, SampleList[i]->V_kV, SampleList[i]->V_kV_UUT));
@@ -2375,7 +2377,7 @@ void MainForm::Connect()
 
  void  MainForm::linkLabel2_LinkClicked(System::Object^ sender, LinkLabelLinkClickedEventArgs^ e)
  {
-	 if (MessageBox::Show(L"Tüm kayıtlı datalar silinecektir\r\nEmin misiniz?", L"Uyarı", MessageBoxButtons::YesNo) != Windows::Forms::DialogResult::Yes) return;
+	 if (MessageBox::Show(L"All saved data will be deleted\r\nAre you sure?", L"Warning", MessageBoxButtons::YesNo) != Windows::Forms::DialogResult::Yes) return;
 	 TestNo = 0;
 	 GridList->Clear();
 	 ResultList->Clear();

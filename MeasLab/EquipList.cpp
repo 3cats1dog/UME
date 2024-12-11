@@ -54,14 +54,16 @@ Void EquipList::btnGPIBFind_Click(System::Object^ sender, System::EventArgs^ e)
 		//	G::connectedGBIP->Add(str);
 		//} 
 
+		bool isGP = cmbConnType->SelectedIndex == 1;
+		bool isUsb = cmbConnType->SelectedIndex == 4;
+
 		for each (String ^ str in  IDMM::findRrsc())	//G::rsc->FindRsrc("?*INSTR")
 		{
-			if (str->Contains("GP"))
+			if (str->Contains(isGP? "GP" : "USB"))
 			{
 				G::connectedGBIP->Add(str);
 			}
 		}
-
 	}
 	catch (Exception^ ex)
 	{
@@ -80,6 +82,8 @@ Void EquipList::FindDeviceList() {
 	return;
 	try
 	{
+		bool isGP = cmbConnType->SelectedIndex == 1;
+		bool isUsb= cmbConnType->SelectedIndex == 4;
 
 		//Ivi::Visa::Interop::ResourceManager^ rsc = gcnew Ivi::Visa::Interop::ResourceManagerClass();
 		//for each (String^ str in  rsc->FindRsrc("?*INSTR"))	
@@ -89,7 +93,7 @@ Void EquipList::FindDeviceList() {
 
 		for each (String ^ str in  IDMM::findRrsc())	//G::rsc->FindRsrc("?*INSTR")
 		{
-			if (str->Contains("GP"))
+			if (str->Contains(isGP ? "GP": "USB"))
 			{
 				G::connectedGBIP->Add(str);
 			}
@@ -184,7 +188,7 @@ Void EquipList::UpdateForm() {
 			  btnDelete->Visible = false;
 			  btnSave->Visible = true;
 			  btnTestConnection->Visible = true;
-			  if (SelectedEnv->connType == EnvanterConnection::GBIP || SelectedEnv->connType == EnvanterConnection::PXI)
+			  if (SelectedEnv->connType == EnvanterConnection::GBIP || SelectedEnv->connType == EnvanterConnection::USB ||  SelectedEnv->connType == EnvanterConnection::PXI)
 			  {
 				  btnDelete->Visible = true;
 			  }
@@ -219,7 +223,7 @@ Void EquipList::ReadForm() {
 
 		if (!(parse1 && parse2 && parse3))
 		{
-			MessageBox::Show(L"Lütfen geçerli bir sayı giriniz!!!");
+			MessageBox::Show(L"Please enter a valid number!!!");
 		}
 
 		break;
@@ -234,9 +238,9 @@ System::Void  EquipList::btnAddDMM_Click(System::Object^ sender, System::EventAr
 
 	SelectedEnv = gcnew	Envanter();
 	SelectedEnv->tip = EnvanterType::DMM;
-	SelectedEnv->connType = EnvanterConnection::GBIP;
+	SelectedEnv->connType = EnvanterConnection::USB;
 	SelectedEnv->ID = 0;
-	btnSave->Text = L"Yeni Ekle";
+	btnSave->Text = L"Add New";
 
 	switch (cmbNewDMMType->SelectedIndex)
 	{
@@ -270,7 +274,7 @@ System::Void EquipList::btnAddDivider_Click(System::Object^ sender, System::Even
 	SelectedEnv->device = DMMDevice::DividerDevice;
 	SelectedEnv->tip = EnvanterType::Divider;
 	SelectedEnv->ID = 0;
-	btnSave->Text = L"Yeni Ekle";
+	btnSave->Text = L"Add New";
 	UpdateForm();
 }
 
@@ -329,13 +333,13 @@ System::Void  EquipList::btnSave_Click(System::Object^ sender, System::EventArgs
 System::Void  EquipList::dgw_DMM_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	if (dgw_DMM->SelectedRows->Count < 1) return;
 	SelectedEnv = DMMList[dgw_DMM->SelectedRows[0]->Index];
-	btnSave->Text = L"Güncelle";
+	btnSave->Text = L"Update";
 	UpdateForm();
 }
 System::Void  EquipList::dgw_Divider_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	if (dgw_Divider->SelectedRows->Count < 1) return;
 	SelectedEnv = DividerList[dgw_Divider->SelectedRows[0]->Index];
-	btnSave->Text = L"Güncelle";
+	btnSave->Text = L"Update";
 	UpdateForm();
 }
 
@@ -356,10 +360,11 @@ System::Void EquipList::btnTestConnection_Click(System::Object^ sender, System::
 	switch (SelectedEnv->connType)
 	{
 	case EnvanterConnection::GBIP:
-		instrument->Connect(SelectedEnv->Address, 0, true);
+	case EnvanterConnection::USB:
+		instrument->Connect(SelectedEnv->Address, 0, SelectedEnv->connType);
 		break;
 	case EnvanterConnection::RS232:
-		instrument->Connect(SelectedEnv->Address, G::mySet->BaudRate, false);
+		instrument->Connect(SelectedEnv->Address, G::mySet->BaudRate, SelectedEnv->connType);
 		break;
 	case EnvanterConnection::None:
 		//El ile veri alınacak;
@@ -377,7 +382,7 @@ System::Void EquipList::btnTestConnection_Click(System::Object^ sender, System::
 	}
 	else
 	{
-		MessageBox::Show(L"Bağlantı hatası!!");
+		MessageBox::Show(L"Connection error!!");
 	}
 	instrument->DisConnect();
 

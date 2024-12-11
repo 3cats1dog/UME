@@ -222,6 +222,8 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->Column15 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnAddDivider = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->lblDMMType = (gcnew System::Windows::Forms::Label());
+			this->lblTypeName = (gcnew System::Windows::Forms::Label());
 			this->btnTestConnection = (gcnew System::Windows::Forms::Button());
 			this->btnDelete = (gcnew System::Windows::Forms::Button());
 			this->btnSave = (gcnew System::Windows::Forms::Button());
@@ -247,8 +249,6 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->btnGPIBFind = (gcnew System::Windows::Forms::Button());
 			this->btnAddDMM = (gcnew System::Windows::Forms::Button());
 			this->cmbNewDMMType = (gcnew System::Windows::Forms::ComboBox());
-			this->lblTypeName = (gcnew System::Windows::Forms::Label());
-			this->lblDMMType = (gcnew System::Windows::Forms::Label());
 			this->gbDMM->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgw_DMM))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -303,7 +303,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// Column4
 			// 
 			this->Column4->DataPropertyName = L"tipName";
-			this->Column4->HeaderText = L"Tip";
+			this->Column4->HeaderText = L"Type";
 			this->Column4->Name = L"Column4";
 			this->Column4->ReadOnly = true;
 			this->Column4->Visible = false;
@@ -311,7 +311,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// Column8
 			// 
 			this->Column8->DataPropertyName = L"Marka";
-			this->Column8->HeaderText = L"Marka";
+			this->Column8->HeaderText = L"Brand";
 			this->Column8->Name = L"Column8";
 			this->Column8->ReadOnly = true;
 			// 
@@ -372,7 +372,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// Column7
 			// 
 			this->Column7->DataPropertyName = L"StrConnType";
-			this->Column7->HeaderText = L"Bağlantı";
+			this->Column7->HeaderText = L"Connection";
 			this->Column7->Name = L"Column7";
 			this->Column7->ReadOnly = true;
 			this->Column7->Resizable = System::Windows::Forms::DataGridViewTriState::True;
@@ -393,7 +393,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->groupBox1->Size = System::Drawing::Size(639, 265);
 			this->groupBox1->TabIndex = 21;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Gerilim Bölücüler";
+			this->groupBox1->Text = L"Voltage Dividers";
 			// 
 			// dgw_Divider
 			// 
@@ -430,7 +430,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// dataGridViewTextBoxColumn2
 			// 
 			this->dataGridViewTextBoxColumn2->DataPropertyName = L"tipName";
-			this->dataGridViewTextBoxColumn2->HeaderText = L"Tip";
+			this->dataGridViewTextBoxColumn2->HeaderText = L"Type";
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
 			this->dataGridViewTextBoxColumn2->ReadOnly = true;
 			this->dataGridViewTextBoxColumn2->Visible = false;
@@ -438,7 +438,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// dataGridViewTextBoxColumn3
 			// 
 			this->dataGridViewTextBoxColumn3->DataPropertyName = L"Marka";
-			this->dataGridViewTextBoxColumn3->HeaderText = L"Marka";
+			this->dataGridViewTextBoxColumn3->HeaderText = L"Brand";
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
 			this->dataGridViewTextBoxColumn3->ReadOnly = true;
 			// 
@@ -459,7 +459,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// dataGridViewTextBoxColumn6
 			// 
 			this->dataGridViewTextBoxColumn6->DataPropertyName = L"ScalaFactor";
-			this->dataGridViewTextBoxColumn6->HeaderText = L"Scala Faktor";
+			this->dataGridViewTextBoxColumn6->HeaderText = L"Scale Faktor";
 			this->dataGridViewTextBoxColumn6->Name = L"dataGridViewTextBoxColumn6";
 			this->dataGridViewTextBoxColumn6->ReadOnly = true;
 			this->dataGridViewTextBoxColumn6->Visible = false;
@@ -523,7 +523,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->btnAddDivider->Name = L"btnAddDivider";
 			this->btnAddDivider->Size = System::Drawing::Size(132, 23);
 			this->btnAddDivider->TabIndex = 22;
-			this->btnAddDivider->Text = L"Yeni Bölücü Ekle";
+			this->btnAddDivider->Text = L"Add New Divider";
 			this->btnAddDivider->UseVisualStyleBackColor = true;
 			this->btnAddDivider->Click += gcnew System::EventHandler(this, &EquipList::btnAddDivider_Click);
 			// 
@@ -548,13 +548,31 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->groupBox2->TabIndex = 23;
 			this->groupBox2->TabStop = false;
 			// 
+			// lblDMMType
+			// 
+			this->lblDMMType->AutoSize = true;
+			this->lblDMMType->Location = System::Drawing::Point(109, 33);
+			this->lblDMMType->Name = L"lblDMMType";
+			this->lblDMMType->Size = System::Drawing::Size(31, 13);
+			this->lblDMMType->TabIndex = 27;
+			this->lblDMMType->Text = L"Type";
+			// 
+			// lblTypeName
+			// 
+			this->lblTypeName->AutoSize = true;
+			this->lblTypeName->Location = System::Drawing::Point(34, 33);
+			this->lblTypeName->Name = L"lblTypeName";
+			this->lblTypeName->Size = System::Drawing::Size(31, 13);
+			this->lblTypeName->TabIndex = 26;
+			this->lblTypeName->Text = L"Type";
+			// 
 			// btnTestConnection
 			// 
 			this->btnTestConnection->Location = System::Drawing::Point(193, 228);
 			this->btnTestConnection->Name = L"btnTestConnection";
 			this->btnTestConnection->Size = System::Drawing::Size(132, 23);
 			this->btnTestConnection->TabIndex = 25;
-			this->btnTestConnection->Text = L"Test Et";
+			this->btnTestConnection->Text = L"Test";
 			this->btnTestConnection->UseVisualStyleBackColor = true;
 			this->btnTestConnection->Click += gcnew System::EventHandler(this, &EquipList::btnTestConnection_Click);
 			// 
@@ -564,7 +582,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(132, 23);
 			this->btnDelete->TabIndex = 24;
-			this->btnDelete->Text = L"Sil";
+			this->btnDelete->Text = L"Delete";
 			this->btnDelete->UseVisualStyleBackColor = true;
 			this->btnDelete->Click += gcnew System::EventHandler(this, &EquipList::btnDelete_Click);
 			// 
@@ -574,7 +592,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Size = System::Drawing::Size(132, 23);
 			this->btnSave->TabIndex = 23;
-			this->btnSave->Text = L"Güncelle";
+			this->btnSave->Text = L"Update";
 			this->btnSave->UseVisualStyleBackColor = true;
 			this->btnSave->Click += gcnew System::EventHandler(this, &EquipList::btnSave_Click);
 			// 
@@ -653,7 +671,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			// cmbAddress
 			// 
 			this->cmbAddress->FormattingEnabled = true;
-			this->cmbAddress->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"El tipi", L"GBIP", L"RS232" });
+			this->cmbAddress->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Handheld", L"GBIP", L"RS232" });
 			this->cmbAddress->Location = System::Drawing::Point(88, 36);
 			this->cmbAddress->Name = L"cmbAddress";
 			this->cmbAddress->Size = System::Drawing::Size(192, 21);
@@ -664,16 +682,15 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(10, 39);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(32, 13);
+			this->label8->Size = System::Drawing::Size(59, 13);
 			this->label8->TabIndex = 9;
-			this->label8->Text = L"GBIP";
+			this->label8->Text = L"GBIP/USB";
 			// 
 			// cmbConnType
 			// 
 			this->cmbConnType->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->cmbConnType->Enabled = false;
 			this->cmbConnType->FormattingEnabled = true;
-			this->cmbConnType->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"El tipi", L"GBIP", L"RS232", L"PXI" });
+			this->cmbConnType->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Handheld", L"GBIP", L"RS232", L"PXI", L"USB" });
 			this->cmbConnType->Location = System::Drawing::Point(88, 9);
 			this->cmbConnType->Name = L"cmbConnType";
 			this->cmbConnType->Size = System::Drawing::Size(192, 21);
@@ -684,9 +701,9 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(10, 12);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(45, 13);
+			this->label4->Size = System::Drawing::Size(61, 13);
 			this->label4->TabIndex = 7;
-			this->label4->Text = L"Bağlantı";
+			this->label4->Text = L"Connection";
 			// 
 			// label3
 			// 
@@ -725,9 +742,9 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(34, 60);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(37, 13);
+			this->label1->Size = System::Drawing::Size(35, 13);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Marka";
+			this->label1->Text = L"Brand";
 			// 
 			// txtMarka
 			// 
@@ -743,19 +760,19 @@ private: System::Windows::Forms::Label^ lblTypeName;
 				static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(14, 12);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(236, 20);
+			this->label7->Size = System::Drawing::Size(220, 20);
 			this->label7->TabIndex = 24;
-			this->label7->Text = L"Laboratuvar Ekipman Listesi";
+			this->label7->Text = L"Laboratory Equipment List";
 			// 
 			// btnGPIBFind
 			// 
 			this->btnGPIBFind->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->btnGPIBFind->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnGPIBFind.Image")));
-			this->btnGPIBFind->Location = System::Drawing::Point(1153, 12);
+			this->btnGPIBFind->Location = System::Drawing::Point(1141, 12);
 			this->btnGPIBFind->Name = L"btnGPIBFind";
-			this->btnGPIBFind->Size = System::Drawing::Size(119, 23);
+			this->btnGPIBFind->Size = System::Drawing::Size(131, 23);
 			this->btnGPIBFind->TabIndex = 26;
-			this->btnGPIBFind->Text = L"GBIP Tara";
+			this->btnGPIBFind->Text = L"GBIP/USB Search";
 			this->btnGPIBFind->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
 			this->btnGPIBFind->UseVisualStyleBackColor = true;
 			this->btnGPIBFind->Click += gcnew System::EventHandler(this, &EquipList::btnGPIBFind_Click);
@@ -766,7 +783,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->btnAddDMM->Name = L"btnAddDMM";
 			this->btnAddDMM->Size = System::Drawing::Size(132, 23);
 			this->btnAddDMM->TabIndex = 27;
-			this->btnAddDMM->Text = L"Yeni DMM Ekle";
+			this->btnAddDMM->Text = L"Add New DMM";
 			this->btnAddDMM->UseVisualStyleBackColor = true;
 			this->btnAddDMM->Click += gcnew System::EventHandler(this, &EquipList::btnAddDMM_Click);
 			// 
@@ -782,24 +799,6 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->cmbNewDMMType->Name = L"cmbNewDMMType";
 			this->cmbNewDMMType->Size = System::Drawing::Size(129, 21);
 			this->cmbNewDMMType->TabIndex = 10;
-			// 
-			// lblTypeName
-			// 
-			this->lblTypeName->AutoSize = true;
-			this->lblTypeName->Location = System::Drawing::Point(34, 33);
-			this->lblTypeName->Name = L"lblTypeName";
-			this->lblTypeName->Size = System::Drawing::Size(31, 13);
-			this->lblTypeName->TabIndex = 26;
-			this->lblTypeName->Text = L"Type";
-			// 
-			// lblDMMType
-			// 
-			this->lblDMMType->AutoSize = true;
-			this->lblDMMType->Location = System::Drawing::Point(109, 33);
-			this->lblDMMType->Name = L"lblDMMType";
-			this->lblDMMType->Size = System::Drawing::Size(31, 13);
-			this->lblDMMType->TabIndex = 27;
-			this->lblDMMType->Text = L"Type";
 			// 
 			// EquipList
 			// 
@@ -817,7 +816,7 @@ private: System::Windows::Forms::Label^ lblTypeName;
 			this->Controls->Add(this->gbDMM);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"EquipList";
-			this->Text = L"Envanter Listesi";
+			this->Text = L"Inventory List";
 			this->Load += gcnew System::EventHandler(this, &EquipList::EquipList_Load);
 			this->gbDMM->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgw_DMM))->EndInit();

@@ -51,7 +51,7 @@ namespace MeasLab {
 			Delimeter = ";";
 			chkRS232 = true;
 			BaudRate = 9600;
-			Etiket = "Ölçüm 1";
+			Etiket = "Sample 1";
 			Kademe = 100;
 			Ratio = 1;
 			NPLC = 0.02;

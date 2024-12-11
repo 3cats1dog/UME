@@ -39,13 +39,13 @@ using namespace WaveFormMeasument;
 #pragma	region "Connection"
 
 //Generic fol all type DMM
-void IDMM::Connect(String^ cnnstr, int _baudRate, bool _useGPIB)
+void IDMM::Connect(String^ cnnstr, int _baudRate, EnvanterConnection _connType)
 {
 	if (type != DMMType::DMM) return;
 	isFake = false;
 	if (cnnstr->Contains("Demo")) isFake = true;
 
-	connType = (_useGPIB ? EnvanterConnection::GBIP : EnvanterConnection::RS232);
+	connType = _connType;	// (_useGPIB ? EnvanterConnection::GBIP : EnvanterConnection::RS232);
 	//useGPIB = _useGPIB;
 	if (isFake)
 	{
@@ -53,7 +53,7 @@ void IDMM::Connect(String^ cnnstr, int _baudRate, bool _useGPIB)
 		return;
 	}
 
-	if (_useGPIB)
+	if (connType == EnvanterConnection::GBIP || connType == EnvanterConnection::USB)
 	{
 		instr = new GPIB();
 		int len = cnnstr->Length;
@@ -86,7 +86,7 @@ void IDMM::DisConnect()
 		FakeOpen = false;
 		return;
 	}
-	if (connType == EnvanterConnection::GBIP)
+	if (connType == EnvanterConnection::GBIP || connType== EnvanterConnection::USB)
 	{
 
 		//if (instr1 != nullptr)
@@ -136,7 +136,7 @@ void IDMM::ReadStatus()
 {
 	if (isFake) { return; }
 
-	if (connType == EnvanterConnection::GBIP)
+	if (connType == EnvanterConnection::GBIP || connType == EnvanterConnection::USB)
 	{
 		int stb1 = instr->ReadSTB();			//(int)instr1->IO->ReadSTB();	
 		STBByte =  stb1;
@@ -192,7 +192,7 @@ bool IDMM::SendCmd(String^ _cmd)
 	if (isFake) return true;
 	try
 	{
-		if (connType == EnvanterConnection::GBIP)
+		if (connType == EnvanterConnection::GBIP || connType == EnvanterConnection::USB)
 		{
 			char cmd[256];
 			int len = _cmd->Length;
@@ -229,7 +229,7 @@ bool IDMM::ReadAnswer(int ReadCount)
 		return answered;
 	}
 
-	if (connType == EnvanterConnection::GBIP)
+	if (connType == EnvanterConnection::GBIP || connType == EnvanterConnection::USB)
 	{
 		if (ReadCount == 0)
 		{

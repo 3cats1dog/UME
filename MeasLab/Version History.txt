@@ -1,5 +1,9 @@
 ﻿Yapılacaklar:
 
+Ver 1.2.1 (2024-12-11)
+	All label convert to English;
+	
+
 Ver 1.1.9 (2022-11-28)
 	Fix Fake generate culture dependency(all DMM)
 	Fix culture dependency 34470 VLF collect

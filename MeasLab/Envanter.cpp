@@ -27,8 +27,8 @@ Generic::List<Envanter^>^  Envanter::getSampleList()
 	env6->No = 6;
 	env6->device = DMMDevice::NoneDevice;
 	env6->connType = EnvanterConnection::None;
-	env6->Marka = L"Yok";
-	env6->Model = L"Yok";
+	env6->Marka = L"None";
+	env6->Model = L"None";
 	env6->SeriNo = L" ";
 	env6->sfVrms = 1;
 	env6->sfVpeak = 1;
@@ -41,8 +41,8 @@ Generic::List<Envanter^>^  Envanter::getSampleList()
 	env7->No = 7;
 	env7->device = DMMDevice::HandType;
 	env7->connType = EnvanterConnection::None;
-	env7->Marka = L"El Tipi";
-	env7->Model = L"El Tipi";
+	env7->Marka = L"Hand type";
+	env7->Model = L"Hand type";
 	env7->SeriNo = L"-";
 	env7->sfVrms = 1;
 	env7->sfVpeak = 1;
@@ -106,7 +106,7 @@ Generic::List<Envanter^>^  Envanter::getSampleList()
 	env4->connType = EnvanterConnection::None;
 	env4->Marka = L"Germany";
 	env4->Model = L"HPV";
-	env4->SeriNo = L"Bölücü1";
+	env4->SeriNo = L"Divider1";
 	env4->sfVrms = 1000.4;
 	env4->sfVpeak = env4->sfVrms * Math::Sqrt(2);
 	env4->tip = EnvanterType::Divider;
@@ -119,7 +119,7 @@ Generic::List<Envanter^>^  Envanter::getSampleList()
 	env5->connType = EnvanterConnection::None;
 	env5->Marka = L"Local";
 	env5->Model = L"HPV";
-	env5->SeriNo = L"Bölücü2";
+	env5->SeriNo = L"Divider2";
 	env5->sfVrms = 5001.6;
 	env5->sfVpeak = env5->sfVrms * Math::Sqrt(2);
 	env5->tip = EnvanterType::Divider;
@@ -132,7 +132,7 @@ Generic::List<Envanter^>^  Envanter::getSampleList()
 	env11->connType = EnvanterConnection::None;
 	env11->Marka = L"Local";
 	env11->Model = L"Default";
-	env11->SeriNo = L"Bölücü2";
+	env11->SeriNo = L"Divider2";
 	env11->sfVrms = 1000.0;
 	env11->sfVpeak = 1000.0;
 	env11->tip = EnvanterType::Divider;

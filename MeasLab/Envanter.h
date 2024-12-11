@@ -36,6 +36,7 @@ namespace MeasLab {
 		GBIP = 1,
 		RS232 = 2,
 		PXI = 3,
+		USB=4,
 	};
 
 	[Serializable]
@@ -84,7 +85,7 @@ namespace MeasLab {
 				switch (tip)
 				{
 				case EnvanterType::DMM: return "DMM"; break;
-				case EnvanterType::Divider: return L"Bölücü"; break;
+				case EnvanterType::Divider: return L"Divider"; break;
 				default: return ""; break;
 				}
 			}
@@ -103,9 +104,10 @@ namespace MeasLab {
 		property String^ StrConnType { String^ get() {
 			switch (connType)
 			{
-			case EnvanterConnection::None: return "El tipi"; break;
+			case EnvanterConnection::None: return "Hand type"; break;
 			case EnvanterConnection::GBIP:return "GBIP"; break;
 			case EnvanterConnection::RS232:return "RS232"; break;
+			case EnvanterConnection::USB: return "USB"; break;
 			default: return ""; break;
 			}
 		}}

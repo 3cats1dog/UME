@@ -126,12 +126,12 @@ namespace MeasLab {
 			this->groupBox1->Size = System::Drawing::Size(255, 91);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Ses Kontrol";
+			this->groupBox1->Text = L"Voice Control";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(95, 50);
+			this->label4->Location = System::Drawing::Point(112, 50);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(20, 13);
 			this->label4->TabIndex = 6;
@@ -140,7 +140,7 @@ namespace MeasLab {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(95, 21);
+			this->label5->Location = System::Drawing::Point(112, 21);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(20, 13);
 			this->label5->TabIndex = 5;
@@ -151,13 +151,13 @@ namespace MeasLab {
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(5, 50);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(29, 13);
+			this->label3->Size = System::Drawing::Size(47, 13);
 			this->label3->TabIndex = 4;
-			this->label3->Text = L"Süre";
+			this->label3->Text = L"Duration";
 			// 
 			// nud_Duration
 			// 
-			this->nud_Duration->Location = System::Drawing::Point(39, 48);
+			this->nud_Duration->Location = System::Drawing::Point(56, 48);
 			this->nud_Duration->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2000, 0, 0, 0 });
 			this->nud_Duration->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
 			this->nud_Duration->Name = L"nud_Duration";
@@ -176,7 +176,7 @@ namespace MeasLab {
 			// 
 			// nud_Freq
 			// 
-			this->nud_Freq->Location = System::Drawing::Point(39, 19);
+			this->nud_Freq->Location = System::Drawing::Point(56, 19);
 			this->nud_Freq->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5000, 0, 0, 0 });
 			this->nud_Freq->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100, 0, 0, 0 });
 			this->nud_Freq->Name = L"nud_Freq";
@@ -190,7 +190,7 @@ namespace MeasLab {
 			this->btnPlaySound->Name = L"btnPlaySound";
 			this->btnPlaySound->Size = System::Drawing::Size(71, 49);
 			this->btnPlaySound->TabIndex = 0;
-			this->btnPlaySound->Text = L"Ses Çal";
+			this->btnPlaySound->Text = L"Play Sound";
 			this->btnPlaySound->UseVisualStyleBackColor = true;
 			this->btnPlaySound->Click += gcnew System::EventHandler(this, &SettingForm::btnPlaySound_Click);
 			// 
@@ -203,7 +203,7 @@ namespace MeasLab {
 			this->groupBox2->Size = System::Drawing::Size(274, 164);
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Giriş Empedansı";
+			this->groupBox2->Text = L"Input Impedance";
 			// 
 			// label1
 			// 
@@ -211,20 +211,19 @@ namespace MeasLab {
 			this->label1->ForeColor = System::Drawing::Color::Red;
 			this->label1->Location = System::Drawing::Point(16, 68);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(221, 78);
+			this->label1->Size = System::Drawing::Size(201, 78);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Sabit Empedans Modu\r\nTüm kademeler için sabit: 10MΩ\r\n\r\nDeğişken Empedans Modu\r\n10"
-				L"0 mV / 1V ve 10 V kademeleri için >10 GΩ\r\n100V ve 1000 V kademeleri için 10 MΩ\r\n"
-				L"";
+			this->label1->Text = L"Fixed Impedance Mode\r\nFixed for all ranges: 10MΩ\r\n\r\nVariable Impedance Mode\r\n10>1"
+				L"0 GΩ for 0 mV / 1V ve 10 V ranges \r\n10 MΩ for 100V ve 1000 V ranges\r\n";
 			// 
 			// chkUseFixZInput
 			// 
 			this->chkUseFixZInput->AutoSize = true;
 			this->chkUseFixZInput->Location = System::Drawing::Point(19, 39);
 			this->chkUseFixZInput->Name = L"chkUseFixZInput";
-			this->chkUseFixZInput->Size = System::Drawing::Size(135, 17);
+			this->chkUseFixZInput->Size = System::Drawing::Size(129, 17);
 			this->chkUseFixZInput->TabIndex = 0;
-			this->chkUseFixZInput->Text = L"Sabit Empedans Kullan";
+			this->chkUseFixZInput->Text = L"Use Fixed Impedance";
 			this->chkUseFixZInput->UseVisualStyleBackColor = true;
 			this->chkUseFixZInput->CheckedChanged += gcnew System::EventHandler(this, &SettingForm::chkUseFixZInput_CheckedChanged);
 			// 
@@ -234,7 +233,7 @@ namespace MeasLab {
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Size = System::Drawing::Size(139, 50);
 			this->btnSave->TabIndex = 1;
-			this->btnSave->Text = L"Kaydet";
+			this->btnSave->Text = L"Save";
 			this->btnSave->UseVisualStyleBackColor = true;
 			this->btnSave->Click += gcnew System::EventHandler(this, &SettingForm::btnSave_Click);
 			// 
@@ -246,17 +245,18 @@ namespace MeasLab {
 			this->groupBox3->Size = System::Drawing::Size(255, 67);
 			this->groupBox3->TabIndex = 2;
 			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"El Tipi DMM ";
+			this->groupBox3->Text = L"Hand type DMM ";
 			// 
 			// chkAutoNextOnManualReading
 			// 
 			this->chkAutoNextOnManualReading->AutoSize = true;
-			this->chkAutoNextOnManualReading->Location = System::Drawing::Point(39, 32);
+			this->chkAutoNextOnManualReading->Location = System::Drawing::Point(10, 32);
 			this->chkAutoNextOnManualReading->Name = L"chkAutoNextOnManualReading";
-			this->chkAutoNextOnManualReading->Size = System::Drawing::Size(195, 17);
+			this->chkAutoNextOnManualReading->Size = System::Drawing::Size(218, 17);
 			this->chkAutoNextOnManualReading->TabIndex = 1;
-			this->chkAutoNextOnManualReading->Text = L"Otomatik olarak sonraki ölçüme geç";
+			this->chkAutoNextOnManualReading->Text = L"Automatically move to next measurement";
 			this->chkAutoNextOnManualReading->UseVisualStyleBackColor = true;
+			this->chkAutoNextOnManualReading->CheckedChanged += gcnew System::EventHandler(this, &SettingForm::chkAutoNextOnManualReading_CheckedChanged);
 			// 
 			// groupBox4
 			// 
@@ -267,7 +267,7 @@ namespace MeasLab {
 			this->groupBox4->Size = System::Drawing::Size(274, 63);
 			this->groupBox4->TabIndex = 3;
 			this->groupBox4->TabStop = false;
-			this->groupBox4->Text = L"VLF Ölçümleri";
+			this->groupBox4->Text = L"VLF Measurements";
 			// 
 			// txtWaveFormSampleCount
 			// 
@@ -281,9 +281,9 @@ namespace MeasLab {
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(9, 27);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(139, 13);
+			this->label6->Size = System::Drawing::Size(125, 13);
 			this->label6->TabIndex = 0;
-			this->label6->Text = L"Dalgaformu Örneklem Sayısı";
+			this->label6->Text = L"Waveform Sample Count";
 			// 
 			// groupBox5
 			// 
@@ -294,7 +294,7 @@ namespace MeasLab {
 			this->groupBox5->Size = System::Drawing::Size(274, 63);
 			this->groupBox5->TabIndex = 4;
 			this->groupBox5->TabStop = false;
-			this->groupBox5->Text = L"AC Rms Ölçümleri (>40Hz)";
+			this->groupBox5->Text = L"AC Rms Measurements (>40Hz)";
 			// 
 			// txtWaveFormSampleCount2
 			// 
@@ -308,9 +308,9 @@ namespace MeasLab {
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(9, 27);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(139, 13);
+			this->label7->Size = System::Drawing::Size(125, 13);
 			this->label7->TabIndex = 0;
-			this->label7->Text = L"Dalgaformu Örneklem Sayısı";
+			this->label7->Text = L"Waveform Sample Count";
 			// 
 			// groupBox6
 			// 
@@ -320,16 +320,16 @@ namespace MeasLab {
 			this->groupBox6->Size = System::Drawing::Size(255, 63);
 			this->groupBox6->TabIndex = 5;
 			this->groupBox6->TabStop = false;
-			this->groupBox6->Text = L"VLF Ölçümleri (3458A)";
+			this->groupBox6->Text = L"VLF Measurements (3458A)";
 			// 
 			// chkUseDC
 			// 
 			this->chkUseDC->AutoSize = true;
 			this->chkUseDC->Location = System::Drawing::Point(8, 26);
 			this->chkUseDC->Name = L"chkUseDC";
-			this->chkUseDC->Size = System::Drawing::Size(114, 17);
+			this->chkUseDC->Size = System::Drawing::Size(119, 17);
 			this->chkUseDC->TabIndex = 1;
-			this->chkUseDC->Text = L"DC Offset Hesapla";
+			this->chkUseDC->Text = L"Calculate DC Offset";
 			this->chkUseDC->UseVisualStyleBackColor = true;
 			// 
 			// SettingForm
@@ -346,7 +346,7 @@ namespace MeasLab {
 			this->Controls->Add(this->groupBox1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"SettingForm";
-			this->Text = L"Ayarlar";
+			this->Text = L"Settings";
 			this->Load += gcnew System::EventHandler(this, &SettingForm::SettingForm_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -393,16 +393,18 @@ namespace MeasLab {
 		String^ msg = "";
 		if (G::mySet->DesiredVLFCount > 100000)
 		{
-			msg = "VLF Dalgaboyu örneklem sayısı 100.000'den büyük olamaz!";
+			msg = "VLF Wavelength sample count cannot exceed 100,000!";
 			G::mySet->DesiredVLFCount = 100000;
 		}
 		if (G::mySet->DesiredVLFCount2 > 100000)
 		{
-			msg = "AC rms Dalgaboyu örneklem sayısı 100.000'den büyük olamaz!";
+			msg = "AC rms Wavelength sample number cannot exceed 100,000!";
 			G::mySet->DesiredVLFCount2 = 100000;
 		}
 		G::SaveSettings();
 	}
+private: System::Void chkAutoNextOnManualReading_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 
 }
